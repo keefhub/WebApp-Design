@@ -6,34 +6,34 @@
 
 ### Navigating around git
 
-Cloning to repository:
-git clone https://github.com/keefhub/WebApp-Design.git
-Switch to branch :
+Cloning to repository: <br />
+git clone https://github.com/keefhub/WebApp-Design.git <br />
+Switch to branch : <br />
 git checkout &lt;branchname&gt;
 
 ### Commiting and Pushing:
 
-:exclamation: make sure that you are in your own branch :exclamation:
-checking your branch:
-git branch -a
+:exclamation: make sure that you are in your own branch :exclamation: <br />
+checking your branch:<br />
+git branch -a<br />
 your current working branch will have an asterisk beside
 
-adding changes to your branch:
-git add -A
-&rsquo;-A&rsquo; command adds all the changes you made.
-If you want to add specific file, run this command:
-git add &lt;FILENAME.FILETYPE&gt;
+adding changes to your branch:<br />
+git add -A<br />
+&rsquo;-A&rsquo; command adds all the changes you made.<br />
+If you want to add specific file, run this command:<br />
+git add &lt;FILENAME.FILETYPE&gt;<br />
 
-commiting changes to your branch:
-git commit -m &rsquo;&lt;SOME MESSAGE&gt;&rsquo;
+commiting changes to your branch:<br />
+git commit -m &rsquo;&lt;SOME MESSAGE&gt;&rsquo;<br />
 
-lastly, pushing changes to your branch:
-git push origin &lt;YOUR BRANCH NAME&gt;
+lastly, pushing changes to your branch:<br />
+git push origin &lt;YOUR BRANCH NAME&gt;<br />
 
-going to main branch:
-git checkout main
-git merge &lt;YOUR BRANCH NAME&gt;
-git push origin main
+going to main branch:<br />
+git checkout main<br />
+git merge &lt;YOUR BRANCH NAME&gt;<br />
+git push origin main<br />
 
 before you start coding, always pull any changes from main:
 
