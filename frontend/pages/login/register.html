@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>Register an Account</title>
+  <link rel="stylesheet" href="../App.css" />
+  <meta charset="utf-8" />
+</head>
+<body>
+  <div class="register">
+    <form action="register.php" method="post">
+      <h1>Register</h1>
+      <div class="input-container">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+          class="input"
+        />
+      </div>
+      <div class="input-container">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          required
+          class="input"
+        />
+      </div>
+      <div class="input-container">
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          placeholder="Confirm Password"
+          required
+          class="input"
+        />
+        <script src="./login.js"></script>
+        <script>
+          document
+            .getElementById("confirm_password")
+            .addEventListener("blur", confirm_password);
+        </script>
+      </div>
+      <div class="input-container">
+        <input
+          type="submit"
+          name="submit"
+          value="Register"
+          class="login-button"
+        />
+      </div>
+      <div class="input-container">
+        <input type="reset" name="reset" value="Reset" class="login-button" />
+      </div>
+      <p class="message">
+        Already have an account? <a href="loginpage.html">Login</a>
+      </p>
+    </form>
+  </div>
+</body>
