@@ -1,17 +1,21 @@
-<?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    // Example: Check if username and password are valid
-    if ($username === "user" && $password === "password") {
-        // Successful authentication, redirect to the home page
-        header("Location:../homepage.html");
-        exit(); // Make sure to exit to prevent further execution
-    } else {
-        // Invalid username or password, display an error message or redirect to a login error page
-        echo "Invalid username or password. Please try again.";
-    }
-}
+<?php 
+$username = $_POST['username'];
+$password = $_POST['password'];
+$confirm_password = $_POST['confirm_password'];
 ?>
+
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <h1>Registration for new account</h1>
+        <?php
+        echo "<p>Username: $username</p> <br />";
+        echo "<p>Password: $password</p> <br />";
+        echo "<p>Confirm Password: $confirm_password</p> <br />";
+        if ($password === $confirm_password) {
+            echo "<p>Registration successful!</p>";
+        } 
+        ?>
+</html>
