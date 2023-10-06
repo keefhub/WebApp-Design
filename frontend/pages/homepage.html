@@ -7,6 +7,54 @@
 </head>
 <body>
   <div class="body">
-    <h1>this is the homepage</h1>
+    <div class="top-bar">
+      <a href="./checkoutPage.html"
+        ><img src="../components/icons/shopping-bag.png" alt="cart"
+      /></a>
+      <a href="./login/loginpage.html">Log In</a>
+    </div>
+    <div class="nav">
+      <nav>
+        <ul>
+          <li><a href="./homepage.html">Home</a></li>
+          <li><a href="./storefrontPage.html">Product Catalog</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="main-content">
+      <div class="slider">
+        <div class="slide">
+          <p>11.11 Sales</p>
+        </div>
+        <div class="slide">
+          <p>Get 25% off selected items!</p>
+        </div>
+      </div>
+      <script>
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        let currentIndex = 0;
+
+        function updateSlider() {
+          const slideWidth = slides[currentIndex].offsetWidth;
+          const translateValue = -currentIndex * slideWidth + "px";
+          slider.style.transform = "translateX(" + translateValue + ")";
+        }
+
+        function showNextSlide() {
+          currentIndex++;
+          if (currentIndex >= slides.length) {
+            currentIndex = 0;
+          }
+          updateSlider();
+        }
+
+        function autoSlide() {
+          setInterval(showNextSlide, 3000);
+        }
+
+        autoSlide();
+      </script>
+    </div>
   </div>
 </body>

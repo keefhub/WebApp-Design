@@ -9,6 +9,7 @@
 Cloning to repository: <br />
 git clone https://github.com/keefhub/WebApp-Design.git <br />
 Switch to branch : <br />
+
 git checkout &lt;branchname&gt;
 
 ### Commiting and Pushing:
