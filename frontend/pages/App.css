@@ -119,16 +119,20 @@ nav a:hover {
 
 .slider {
   display: flex;
-  overflow: hidden;
+  padding-top: 5px;
+  width: 100%;
+  overflow: visible;
 }
 
 .slide {
   flex: 0 0 100%;
   text-align: center;
-  padding: 20px;
   background-color: #cfcfc4;
+  padding: 20px;
+  display: block;
 }
 
-.slide p {
+.slide li {
   margin: 0;
+  list-style-type: none;
 }

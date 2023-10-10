@@ -24,10 +24,10 @@
     <div class="main-content">
       <div class="slider">
         <div class="slide">
-          <p>11.11 Sales</p>
+          <li>11.11 Sales</li>
         </div>
         <div class="slide">
-          <p>Get 25% off selected items!</p>
+          <li>Get 25% off selected items!</li>
         </div>
       </div>
       <script>
@@ -36,7 +36,7 @@
         let currentIndex = 0;
 
         function updateSlider() {
-          const slideWidth = slides[currentIndex].offsetWidth;
+          const slideWidth = slider.offsetWidth;
           const translateValue = -currentIndex * slideWidth + "px";
           slider.style.transform = "translateX(" + translateValue + ")";
         }
@@ -55,6 +55,9 @@
 
         autoSlide();
       </script>
+      <div class="image">
+        <img src="../components/images/homepage_image.png" />
+      </div>
     </div>
   </div>
 </body>
