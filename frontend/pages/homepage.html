@@ -22,42 +22,59 @@
       </nav>
     </div>
     <div class="main-content">
-      <div class="slider">
-        <div class="slide">
-          <li>11.11 Sales</li>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="text">11.11 Sale!</div>
         </div>
-        <div class="slide">
-          <li>Get 25% off selected items!</li>
+
+        <div class="mySlides fade">
+          <div class="text">Free delivery with min. spend $50</div>
         </div>
       </div>
+      <br />
+
       <script>
-        const slider = document.querySelector(".slider");
-        const slides = document.querySelectorAll(".slide");
-        let currentIndex = 0;
+        let slideIndex = 0;
 
-        function updateSlider() {
-          const slideWidth = slider.offsetWidth;
-          const translateValue = -currentIndex * slideWidth + "px";
-          slider.style.transform = "translateX(" + translateValue + ")";
-        }
-
-        function showNextSlide() {
-          currentIndex++;
-          if (currentIndex >= slides.length) {
-            currentIndex = 0;
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
           }
-          updateSlider();
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+
+          slides[slideIndex - 1].style.display = "block";
+
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
 
-        function autoSlide() {
-          setInterval(showNextSlide, 3000);
-        }
-
-        autoSlide();
+        showSlides();
       </script>
       <div class="image">
         <img src="../components/images/homepage_image.png" />
       </div>
+      <div class="tagline">
+        <h1 style="font-size: 45px">
+          Stay In Vogue, Keep Your Fashion In Season
+        </h1>
+        <p style="font-size: 15px">
+          Embrace the Latest Trends and Stay Fashionably Hot All Season Long
+        </p>
+        <div class="shop-button">
+          <button>Shop Apparel</button>
+          <button>Shop Footware</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 Your Website Name</p>
     </div>
   </div>
 </body>

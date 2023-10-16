@@ -1,6 +1,19 @@
-.main-content {
+@font-face {
+  font-family: "Merriweather";
+  src: url("../components/font/Merriweather/Merriweather-Regular.ttf");
+}
+
+* {
+  font-family: "CustomFont", Merriweather, serif;
+}
+
+body {
   margin: auto;
-  padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .form,
@@ -59,7 +72,6 @@
   cursor: pointer;
 }
 .top-bar {
-  margin: -10px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -76,7 +88,7 @@
 }
 
 .top-bar img {
-  width: 30px;
+  width: 40px;
   height: 30px;
   margin-left: 20px;
   border-right: 2px solid #000000;
@@ -84,9 +96,7 @@
 }
 
 nav {
-  margin-top: 40px;
   text-align: center;
-  position: fixed;
   top: 0;
   width: 100%;
   background: white;
@@ -117,22 +127,98 @@ nav a:hover {
   color: #000000;
 }
 
-.slider {
-  display: flex;
-  padding-top: 5px;
-  width: 100%;
-  overflow: visible;
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Verdana, sans-serif;
+}
+.mySlides {
+  display: none;
 }
 
-.slide {
-  flex: 0 0 100%;
-  text-align: center;
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  height: 50px;
   background-color: #cfcfc4;
-  padding: 20px;
-  display: block;
+  margin-top: 5px;
 }
 
-.slide li {
-  margin: 0;
-  list-style-type: none;
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.image {
+  margin-top: -20px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.tagline {
+  text-align: center;
+}
+
+.shop-button {
+  margin-top: 30px;
+}
+
+.shop-button button {
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+}
+.shop-button button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.footer {
+  background-color: #cfcfc4;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+.footer-content {
+  max-width: max-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer p {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
