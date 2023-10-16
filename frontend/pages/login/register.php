@@ -15,7 +15,9 @@ $confirm_password = $_POST['confirm_password'];
         echo "<p>Password: $password</p> <br />";
         echo "<p>Confirm Password: $confirm_password</p> <br />";
         if ($password === $confirm_password) {
-            echo "<p>Registration successful!</p>";
-        } 
+            header("Location: ../homepage.html");
+        } else {
+            echo "Passwords do not match. Please try again.";
+        }
         ?>
 </html>
