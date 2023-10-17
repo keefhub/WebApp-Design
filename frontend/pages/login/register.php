@@ -1,23 +1,37 @@
-<?php 
+<?php
+
 $username = $_POST['username'];
 $password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
+$contact_number = $_POST['contactNumber'];
+$email = $_POST['email'];
+$addressLine1 = $_POST['addressLine1'];
+$addressLine2 = $_POST['addressLine2'];
+
+$address = $addressLine1 ." " . $addressLine2;
+$password = md5($password);
+
+$conn = new mysqli('localhost', 'root', '', 'webapp');
+if ($conn->connect_error) {
+    die("connection failed: " . $conn->connect_error);
+} else {
+    $result = $conn->prepare("INSERT INTO profile (`username`, `password`, `email`, `mobileNumber`, `address`) VALUES (?, ?, ?, ?, ?)");
+    $result->bind_param("sssis", $username, $email, $password, $contact_number, $address);
+    $result->execute();
+    echo "Registration successfully...";
+    $result->close();
+    $conn->close();
+}
+
 ?>
 
 <html>
-    <head>
-        <title>Register</title>
-    </head>
-    <body>
-        <h1>Registration for new account</h1>
-        <?php
-        echo "<p>Username: $username</p> <br />";
-        echo "<p>Password: $password</p> <br />";
-        echo "<p>Confirm Password: $confirm_password</p> <br />";
-        if ($password === $confirm_password) {
-            header("Location: ../homepage.html");
-        } else {
-            echo "Passwords do not match. Please try again.";
-        }
-        ?>
+
+<body>
+    <?php echo("$username")?>
+    <?php echo("$password")?>
+    <?php echo("$contact_number")?>
+    <?php echo("$email")?>
+    <?php echo("$address")?>
+</body>
+
 </html>
