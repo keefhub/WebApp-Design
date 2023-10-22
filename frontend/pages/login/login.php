@@ -14,7 +14,10 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     $result = $conn->query($sql);
     //authenticating from sql table
     if($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $user_id = $row['userid'];
         $_SESSION['valid_user'] = $username;
+        $_SESSION['valid_id'] = $user_id;
         header("Location: ../homepage.php");
     } else {
         echo 'Could not log in. <br />';

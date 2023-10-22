@@ -14,7 +14,7 @@ session_start();
 <body>
     <div class="body">
         <div class="top-bar">
-            <a href="./checkoutPage.html"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+            <a href="./checkoutPage.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
             <?php
             if (isset($_SESSION['valid_user'])) {
                 echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
@@ -27,15 +27,15 @@ session_start();
         <div class="nav">
             <nav>
                 <ul>
-                    <li><a href="./homepage.html">Home</a></li>
+                    <li><a href="./homepage.php">Home</a></li>
                     <div class="dropdown">
                         <li><a href="javascript:void(0)">Product Catalog</a></li>
                         <div class="dropdown-content">
-                            <a href="./product_categories/apparel.html">Apparel</a>
-                            <a href="./product_categories/footwear.html">Footwear</a>
+                            <a href="./product_categories/apparel.php">Apparel</a>
+                            <a href="./product_categories/footwear.php">Footwear</a>
                         </div>
                     </div>
-                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="contact-us.php">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
