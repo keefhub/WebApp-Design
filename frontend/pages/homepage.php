@@ -1,0 +1,114 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+
+<head>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="./App.css" />
+    <link href="../components/footer.html" rel="import" />
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div class="body">
+        <div class="top-bar">
+            <a href="./checkoutPage.html"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+            <?php
+            if (isset($_SESSION['valid_user'])) {
+                echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
+            } else {
+                echo '<a href="./login/loginpage.html">Login</a>';
+            }
+
+?>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="./homepage.html">Home</a></li>
+                    <div class="dropdown">
+                        <li><a href="javascript:void(0)">Product Catalog</a></li>
+                        <div class="dropdown-content">
+                            <a href="./product_categories/apparel.html">Apparel</a>
+                            <a href="./product_categories/footwear.html">Footwear</a>
+                        </div>
+                    </div>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="text">11.11 Sale!</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="text">Free delivery with min. spend $50</div>
+                </div>
+            </div>
+            <br />
+
+            <script>
+                let slideIndex = 0;
+
+                function showSlides() {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) {
+                        slideIndex = 1;
+                    }
+
+                    slides[slideIndex - 1].style.display = "block";
+
+                    setTimeout(showSlides, 2000); // Change image every 2 seconds
+                }
+
+                showSlides();
+            </script>
+            <div class="image">
+                <img src="../components/images/homepage_image.png" />
+            </div>
+            <div class="tagline">
+                <h1 style="font-size: 45px">
+                    Stay In Vogue, Keep Your Fashion In Season
+                </h1>
+                <p style="font-size: 15px">
+                    Embrace the Latest Trends and Stay Fashionably Hot All Season Long
+                </p>
+                <div class="shop-button">
+                    <button>Shop Apparel</button>
+                    <button>Shop Footware</button>
+                </div>
+            </div>
+            <div class="latest">
+                <h3>The Latest</h3>
+                <div class="image" style="display: flex; align-items: center">
+                    <img src="../components/images/latestTrend.png" />
+
+                    <input type="button" value="Get It First" class="get-it-button" />
+                </div>
+                <div class="tagline">
+                    <h1 style="font-size: 45px">
+                        Where Style Meets the Latest Season's Trends
+                    </h1>
+                    <p style="font-size: 15px">
+                        Embrace the Latest Trends and Stay Fashionably Hot All Season Long
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Your Website Name</p>
+        </div>
+    </div>
+</body>
