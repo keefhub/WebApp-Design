@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $mobileNumber = $_POST['mobileNumber'];
@@ -16,8 +17,17 @@ if ($conn->connect_error) {
 } else {
     $result = $conn->prepare("INSERT INTO profile (`username`, `password`, `email`, `mobileNumber`, `address`) VALUES (?, ?, ?, ?, ?)");
     $result->bind_param("sssis", $username, $password, $email, $mobileNumber, $address);
-    $result->execute();
-    echo "Registration successfully...";
+    if ($result->execute()) {
+        // User registration successful, create a session
+        $_SESSION['valid_user'] = $username;
+        $_SESSION['valid_id'] = $result->insert_id; // Get the user's ID
+
+        // Redirect to the homepage or another appropriate page
+        header("Location: ../homepage.php");
+        exit;
+    } else {
+        echo 'Error registering the user. Please try again.<br>';
+    }
     $result->close();
     $conn->close();
 }
