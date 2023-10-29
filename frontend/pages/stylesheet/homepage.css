@@ -1,0 +1,56 @@
+.image {
+  margin-top: -20px;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tagline {
+  text-align: center;
+}
+
+.tagline h1 {
+  font-size: 45px;
+}
+
+.shop-button {
+  margin-top: 30px;
+}
+
+.shop-button button {
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+}
+.shop-button button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.latest h3 {
+  margin-left: 70px;
+  font-size: 25px;
+}
+.get-it-button {
+  position: absolute;
+  margin-top: 200px;
+  margin-right: 1000px;
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+}
+
+.get-it-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

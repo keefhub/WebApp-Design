@@ -7,7 +7,8 @@ session_start();
 <head>
     <title>Homepage</title>
     <link rel="stylesheet" href="./App.css" />
-    <link href="../components/footer.html" rel="import" />
+    <link rel="stylesheet" href="./stylesheet/homepage.css" />
+    <link rel="stylesheet" href="./stylesheet/footer.css" />
     <meta charset="utf-8" />
 </head>
 
@@ -17,7 +18,12 @@ session_start();
             <a href="./checkoutPage.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
             <?php
             if (isset($_SESSION['valid_user'])) {
+                echo '<div class="profile-dropdown">';
                 echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
+                echo '<div class="profile-dropdown-content">';
+                echo '<a href="./logout.php">Logout</a>';
+                echo '</div>';
+                echo '</div>';
             } else {
                 echo '<a href="./login/loginpage.html">Login</a>';
             }
@@ -77,15 +83,15 @@ session_start();
                 <img src="../components/images/homepage_image.png" />
             </div>
             <div class="tagline">
-                <h1 style="font-size: 45px">
+                <h1>
                     Stay In Vogue, Keep Your Fashion In Season
                 </h1>
                 <p style="font-size: 15px">
                     Embrace the Latest Trends and Stay Fashionably Hot All Season Long
                 </p>
                 <div class="shop-button">
-                    <button>Shop Apparel</button>
-                    <button>Shop Footware</button>
+                    <a href="./product_categories/apparel.php"><button>Shop Apparel</button></a>
+                    <a href="./product_categories/footwear.php"><button>Shop Footware</button></a>
                 </div>
             </div>
             <div class="latest">
@@ -96,7 +102,7 @@ session_start();
                     <input type="button" value="Get It First" class="get-it-button" />
                 </div>
                 <div class="tagline">
-                    <h1 style="font-size: 45px">
+                    <h1>
                         Where Style Meets the Latest Season's Trends
                     </h1>
                     <p style="font-size: 15px">
@@ -108,7 +114,7 @@ session_start();
     </div>
     <div class="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Your Website Name</p>
+            <p>&copy; 2023 Daryl & Keith Fashion</p>
         </div>
     </div>
 </body>

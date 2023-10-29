@@ -7,6 +7,8 @@ session_start();
 <head>
   <title>Footwear</title>
   <link rel="stylesheet" href="../App.css" />
+  <link rel="stylesheet" href="./product.css" />
+  <link rel="stylesheet" href="../stylesheet/footer.css" />
   <meta charset="utf-8" />
 </head>
 
@@ -15,11 +17,16 @@ session_start();
     <div class="top-bar">
       <a href="../checkoutPage.php"><img src="../../components/icons/shopping-bag.png" alt="cart" /></a>
       <?php
-            if (isset($_SESSION['valid_user'])) {
-                echo '<a href="../profile.php">' .$_SESSION['valid_user'] . '</a>';
-            } else {
-                echo '<a href="../login/loginpage.html">Login</a>';
-            }
+             if (isset($_SESSION['valid_user'])) {
+                 echo '<div class="profile-dropdown">';
+                 echo '<a href="../profile.php">' .$_SESSION['valid_user'] . '</a>';
+                 echo '<div class="profile-dropdown-content">';
+                 echo '<a href="../logout.php">Logout</a>';
+                 echo '</div>';
+                 echo '</div>';
+             } else {
+                 echo '<a href="../login/loginpage.html">Login</a>';
+             }
 
 ?>
     </div>
@@ -78,7 +85,7 @@ session_start();
   </div>
   <div class="footer">
     <div class="footer-content">
-      <p>&copy; 2023 Your Website Name</p>
+      <p>&copy; 2023 Daryl & Keith Fashion</p>
     </div>
   </div>
 </body>

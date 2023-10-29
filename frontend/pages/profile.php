@@ -30,6 +30,8 @@ $conn->close();
 <head>
     <title>Homepage</title>
     <link rel="stylesheet" href="./App.css" />
+    <link rel="stylesheet" href="./stylesheet/profile.css" />
+    <link rel="stylesheet" href="./stylesheet/footer.css" />
     <link href="../components/footer.html" rel="import" />
     <meta charset="utf-8" />
 </head>
@@ -40,7 +42,12 @@ $conn->close();
             <a href="./checkoutPage.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
             <?php
             if (isset($_SESSION['valid_user'])) {
+                echo '<div class="profile-dropdown">';
                 echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
+                echo '<div class="profile-dropdown-content">';
+                echo '<a href="./logout.php">Logout</a>';
+                echo '</div>';
+                echo '</div>';
             } else {
                 echo '<a href="./login/loginpage.html">Login</a>';
             }
@@ -98,13 +105,47 @@ $conn->close();
             </script>
 
             <body>
-                <h1>Profile:</h1>
-                <a href="./logout.php">Logout</a>
-                <?php
-    echo '<h3>username</h3>' , $username;
-echo '<h3>email</h3>' , $email;
-echo '<h3>address</h3>' , $address;
+                <div class="main-content">
+                    <div class="profile">
+                        <?php
+echo '<div class="username">';
+echo '<h3>Welcome, ', $username, ' </span></h3>';
+echo '</div>';
 ?>
+                    </div>
+                    <div class="tab-container">
+                        <div class="tab">
+                            <button class="tablinks" onclick="openTab(event, 'tab1')">User Profile</button>
+                            <button class="tablinks" onclick="openTab(event, 'tab2')">My Purchases</button>
+                            <button class="tablinks" onclick="openTab(event, 'tab3')">Order History</button>
+                        </div>
+                        <div id="tab1" class="tabcontent">
+
+                            <?php
+
+                                echo '<div class="profile-content">';
+echo '<h3>email: ' , $email, '</span></h3>';
+echo '<h3>address:' , $address, '</span></h3>';
+echo '</div>';?>
+                        </div>
+                        <div id="tab2" class="tabcontent">
+                            <h3>Content for Tab 2</h3>
+                            <p>This is the content for Tab 2.</p>
+                        </div>
+                        <div id="tab3" class="tabcontent">
+                            <h3>Content for Tab 3</h3>
+                            <p>This is the content for Tab 3.</p>
+                        </div>
+                    </div>
+                    <script src="profile.js"></script>
+
+                </div>
+                <div class="footer">
+                    <div class="footer-content">
+                        <p>&copy; 2023 Daryl & Keith Fashion</p>
+                    </div>
+                </div>
+
             </body>
 
 </html>

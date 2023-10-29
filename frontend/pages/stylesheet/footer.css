@@ -1,0 +1,17 @@
+.footer {
+  background-color: #cfcfc4;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+.footer-content {
+  max-width: max-content;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

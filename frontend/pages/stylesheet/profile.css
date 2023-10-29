@@ -1,0 +1,45 @@
+.profile {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.profile span {
+  font-size: 18px;
+}
+
+.username {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.tab {
+  overflow: hidden;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.tab button {
+  background-color: #cfcfc4;
+  float: left;
+  border: 1px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 33.33%;
+  border-radius: 10px;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tabcontent {
+  display: none;
+  margin-left: 25px;
+}
+
+.tabcontent.active {
+  display: block;
+}

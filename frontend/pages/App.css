@@ -5,10 +5,7 @@
 
 * {
   font-family: "CustomFont", Merriweather, serif;
-}
-
-body {
-  margin: auto;
+  box-sizing: border-box;
 }
 
 body {
@@ -160,12 +157,6 @@ nav a:hover {
   display: block;
 }
 
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: Verdana, sans-serif;
-}
 .mySlides {
   display: none;
 }
@@ -210,73 +201,51 @@ body {
   }
 }
 
-.image {
-  margin-top: -20px;
+/*for the dropdown when user hover over their profile*/
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown-content {
+  margin: 0;
   padding: 0;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.tagline {
-  text-align: center;
+.profile-dropdown a {
+  text-decoration: none;
+  color: #333;
 }
 
-.shop-button {
-  margin-top: 30px;
-}
-
-.shop-button button {
-  height: 40px;
-  width: 150px;
-  background-color: black;
-  color: white;
-  border-radius: 30px;
-  border: none;
-  font-weight: bold;
-}
-.shop-button button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.latest h3 {
-  margin-left: 70px;
-  font-size: 25px;
-}
-.get-it-button {
+.profile-dropdown .profile-dropdown-content {
+  display: none;
   position: absolute;
-  margin-top: 200px;
-  margin-right: 1000px;
-  height: 40px;
-  width: 150px;
-  background-color: black;
-  color: white;
-  border-radius: 30px;
-  border: none;
-  font-weight: bold;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 1;
+  transition: all 0.3s; /* Add a smooth transition for all properties */
+  transform: scale(0);
 }
 
-.get-it-button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.footer {
-  background-color: #cfcfc4;
+.profile-dropdown .profile-dropdown-content a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
   text-align: center;
-  padding: 20px 0;
-  margin-top: 30px;
 }
-.footer-content {
-  max-width: max-content;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.profile-dropdown:hover .profile-dropdown-content {
+  display: block;
+  top: 110%;
+  transform: scale(1); /* Scale up to 1 (original size) */
+  box-shadow: 0px 12px 20px 0px rgba(0, 0, 0, 0.4); /* Adjust the box-shadow */
+  background-color: #fff;
+  margin-right: 15px;
 }
-.footer p {
-  padding-bottom: 0;
-  margin-bottom: 0;
+
+.profile-dropdown .profile-dropdown-content a:hover {
+  background-color: #ddd; /* Background color on hover */
 }
+/*footer*/

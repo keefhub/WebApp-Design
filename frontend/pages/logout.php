@@ -8,7 +8,15 @@ unset($_SESSION['valid_user']);
 session_destroy();
 ?>
 
-<html>
+<!DOCTYPE html>
+
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" href="./App.css" />
+    <link rel="stylesheet" href="./stylesheet/logout.css" />
+    <link rel="stylesheet" href="./stylesheet/footer.css" />
+    <meta charset="utf-8" />
+</head>
 
 <body>
     <h1>Log out</h1>
