@@ -18,6 +18,7 @@ if (isset($userid) && isset($username)) {
     $row = $result->fetch_assoc();
     $email = $row['email'];
     $address = $row['address'];
+    $mobileNumber = $row['mobileNumber'];
 } else {
     echo "You are not logged in!";
 }
@@ -109,7 +110,7 @@ $conn->close();
                     <div class="profile">
                         <?php
 echo '<div class="username">';
-echo '<h3>Welcome, ', $username, ' </span></h3>';
+echo '<h3>Stay Vogue, ', $username, ' </span></h3>';
 echo '</div>';
 ?>
                     </div>
@@ -124,8 +125,9 @@ echo '</div>';
                             <?php
 
                                 echo '<div class="profile-content">';
-echo '<h3>email: ' , $email, '</span></h3>';
-echo '<h3>address:' , $address, '</span></h3>';
+echo '<h3>Mobile Number: &nbsp;' , $mobileNumber, '</span></h3>';
+echo '<h3>Registered Email: &nbsp;' , $email, '</span></h3>';
+echo '<h3>Home Address: &nbsp;' , $address, '</span></h3>';
 echo '</div>';?>
                         </div>
                         <div id="tab2" class="tabcontent">
