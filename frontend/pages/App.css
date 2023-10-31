@@ -1,3 +1,5 @@
+/* this CSS is general CSS, i.e., nav bar and auto-scrolling banner. */
+
 @font-face {
   font-family: "Merriweather";
   src: url("../components/font/Merriweather/Merriweather-Regular.ttf");
@@ -193,4 +195,3 @@ nav a:hover {
 .profile-dropdown .profile-dropdown-content a:hover {
   background-color: #ddd; /* Background color on hover */
 }
-/*footer*/
