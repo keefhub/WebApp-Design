@@ -10,7 +10,7 @@ session_start();
 $username = $_SESSION['valid_user'];
 $userid = $_SESSION['valid_id'];
 //connecting to db and querying every row of $username and $userid
-$sql = "SELECT * FROM profile WHERE username = '$username' AND userid = '$userid'";
+$sql = "SELECT * FROM profile WHERE name = '$username' AND userid = '$userid'";
 $result = $conn->query($sql);
 
 if (isset($userid) && isset($username)) {
@@ -18,7 +18,7 @@ if (isset($userid) && isset($username)) {
     $row = $result->fetch_assoc();
     $email = $row['email'];
     $address = $row['address'];
-    $mobileNumber = $row['mobileNumber'];
+    $mobileNumber = $row['contact_number'];
 } else {
     echo "You are not logged in!";
 }
@@ -30,7 +30,7 @@ $conn->close();
 
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="./App.css" />
+    <link rel="stylesheet" href="./stylesheet/app.css" />
     <link rel="stylesheet" href="./stylesheet/profile.css" />
     <link rel="stylesheet" href="./stylesheet/footer.css" />
     <link href="../components/footer.html" rel="import" />
@@ -59,14 +59,8 @@ $conn->close();
             <nav>
                 <ul>
                     <li><a href="./homepage.php">Home</a></li>
-                    <div class="dropdown">
-                        <li><a href="javascript:void(0)">Product Catalog</a></li>
-                        <div class="dropdown-content">
-                            <a href="./product_categories/apparel.php">Apparel</a>
-                            <a href="./product_categories/footwear.php">Footwear</a>
-                        </div>
-                    </div>
-                    <li><a href="contact-us.php">Contact Us</a></li>
+                    <li><a href="./apparel.php">Apparel</a></li>
+                    <li><a href="./contact-us.php">Contact Us</a></li>
                 </ul>
             </nav>
         </div>

@@ -1,22 +1,38 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
+
 <head>
-  <title>Homepage</title>
+  <title>Contact Us</title>
   <link rel="stylesheet" href="./App.css" />
   <link rel="stylesheet" href="./stylesheet/footer.css" />
   <meta charset="utf-8" />
 </head>
+
 <body>
   <div class="body">
     <div class="top-bar">
-      <a href="./checkoutPage.php"
-        ><img src="../components/icons/shopping-bag.png" alt="cart"
-      /></a>
-      <a href="./login/loginpage.html">Log In</a>
+      <a href="./checkoutPage.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+      <?php
+             if (isset($_SESSION['valid_user'])) {
+                 echo '<div class="profile-dropdown">';
+                 echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
+                 echo '<div class="profile-dropdown-content">';
+                 echo '<a href="./logout.php">Logout</a>';
+                 echo '</div>';
+                 echo '</div>';
+             } else {
+                 echo '<a href="./login/loginpage.html">Login</a>';
+             }
+
+?>
     </div>
     <div class="nav">
       <nav>
         <ul>
-          <li><a href="./homepage.html">Home</a></li>
+          <li><a href="./homepage.php">Home</a></li>
           <div class="dropdown">
             <li><a href="javascript:void(0)">Product Catalog</a></li>
             <div class="dropdown-content">
@@ -33,12 +49,17 @@
         <div class="mySlides fade">
           <div class="text">11.11 Sale!</div>
         </div>
-
         <div class="mySlides fade">
           <div class="text">Free delivery with min. spend $50</div>
         </div>
+        <div class="mySlides fade">
+          <div class="text">30% Off Selected Items!</div>
+        </div>
       </div>
       <br />
+      <div>
+        
+      </div>
 
       <script>
         let slideIndex = 0;
@@ -62,42 +83,11 @@
 
         showSlides();
       </script>
-      <div class="image">
-        <img src="../components/images/homepage_image.png" />
-      </div>
-      <div class="tagline">
-        <h1 style="font-size: 45px">
-          Stay In Vogue, Keep Your Fashion In Season
-        </h1>
-        <p style="font-size: 15px">
-          Embrace the Latest Trends and Stay Fashionably Hot All Season Long
-        </p>
-        <div class="shop-button">
-          <button>Shop Apparel</button>
-          <button>Shop Footware</button>
-        </div>
-      </div>
-      <div class="latest">
-        <h3>The Latest</h3>
-        <div class="image" style="display: flex; align-items: center">
-          <img src="../components/images/latestTrend.png" />
-
-          <input type="button" value="Get It First" class="get-it-button" />
-        </div>
-        <div class="tagline">
-          <h1 style="font-size: 45px">
-            Where Style Meets the Latest Season's Trends
-          </h1>
-          <p style="font-size: 15px">
-            Embrace the Latest Trends and Stay Fashionably Hot All Season Long
-          </p>
-        </div>
-      </div>
     </div>
   </div>
   <div class="footer">
     <div class="footer-content">
-      <p>&copy; 2023 Your Website Name</p>
+      <p>&copy; 2023 Daryl & Keith Fashion</p>
     </div>
   </div>
 </body>

@@ -1,14 +1,35 @@
 <?php
 session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $contactNumber = $_POST['contactNumber'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+    $to = 'webapp@localhost';
+    $subject = 'Contact Us Query';
+    $message = "Name: $name\nContact Number: $contactNumber\nEmail: $email\nMessage:\n$message";
+
+    // You can use mail() function to send the email
+    mail($to, $subject, $message);
+
+    // Redirect to a thank you page or show a confirmation message
+    header('Location: thank-you.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
+<html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
-  <link rel="stylesheet" href="./App.css" />
+  <link rel="stylesheet" href="./stylesheet/app.css" />
   <link rel="stylesheet" href="./stylesheet/footer.css" />
-  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./stylesheet/contactus.css" />
 </head>
 
 <body>
@@ -24,7 +45,7 @@ session_start();
                  echo '</div>';
                  echo '</div>';
              } else {
-                 echo '<a href="./login/loginpage.html">Login</a>';
+                 echo '<a href="./loginpage.html">Login</a>';
              }
 
 ?>
@@ -33,14 +54,8 @@ session_start();
       <nav>
         <ul>
           <li><a href="./homepage.php">Home</a></li>
-          <div class="dropdown">
-            <li><a href="javascript:void(0)">Product Catalog</a></li>
-            <div class="dropdown-content">
-              <a href="./product_categories/apparel.php">Apparel</a>
-              <a href="./product_categories/footwear.php">Footwear</a>
-            </div>
-          </div>
-          <li><a href="contact-us.php">Contact Us</a></li>
+          <li><a href="./apparel.php">Apparel</a></li>
+          <li><a href="./contact-us.php">Contact Us</a></li>
         </ul>
       </nav>
     </div>
@@ -57,6 +72,9 @@ session_start();
         </div>
       </div>
       <br />
+      <div>
+        
+      </div>
 
       <script>
         let slideIndex = 0;
@@ -80,11 +98,30 @@ session_start();
 
         showSlides();
       </script>
-    </div>
   </div>
-  <div class="footer">
-    <div class="footer-content">
-      <p>&copy; 2023 Daryl & Keith Fashion</p>
-    </div>
+  <div class="main-content">
+    <h1>Contact Us</h1>
+    <p>Have questions or feedback? Please fill out the form below:</p>
+    <form method="POST" action="contact-us.php">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required><br>
+      <label for="contactNumber">Contact Number:</label>
+      <input type="tel" name="contactNumber" required><br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" required><br>
+      <label for="message">Message:</label>
+      <textarea name="message" rows="4" required></textarea><br>
+      <input type="submit" value="Submit">
+    </form>
   </div>
+  
+  <footer>
+    <div class="footer">
+      <div class="footer-content">
+        <p>&copy; 2023 Daryl & Keith Fashion</p>
+      </div>
+    </div>
+  </footer>
 </body>
+
+</html>

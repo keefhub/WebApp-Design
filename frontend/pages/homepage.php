@@ -5,11 +5,12 @@ session_start();
 <!DOCTYPE html>
 
 <head>
-    <title>Homepage</title>
-    <link rel="stylesheet" href="./App.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarylnKeith. Where fashion meets style.</title>
+    <link rel="stylesheet" href="./stylesheet/app.css" />
     <link rel="stylesheet" href="./stylesheet/homepage.css" />
     <link rel="stylesheet" href="./stylesheet/footer.css" />
-    <meta charset="utf-8" />
 </head>
 
 <body>
@@ -25,7 +26,7 @@ session_start();
                 echo '</div>';
                 echo '</div>';
             } else {
-                echo '<a href="./login/loginpage.html">Login</a>';
+                echo '<a href="./loginpage.html">Login</a>';
             }
 
 ?>
@@ -34,14 +35,8 @@ session_start();
             <nav>
                 <ul>
                     <li><a href="./homepage.php">Home</a></li>
-                    <div class="dropdown">
-                        <li><a href="javascript:void(0)">Product Catalog</a></li>
-                        <div class="dropdown-content">
-                            <a href="./product_categories/apparel.php">Apparel</a>
-                            <a href="./product_categories/footwear.php">Footwear</a>
-                        </div>
-                    </div>
-                    <li><a href="contact-us.php">Contact Us</a></li>
+                    <li><a href="./apparel.php">Apparel</a></li>
+                    <li><a href="./contact-us.php">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
@@ -90,8 +85,7 @@ session_start();
                     Embrace the Latest Trends and Stay Fashionably Hot All Season Long
                 </p>
                 <div class="shop-button">
-                    <a href="./product_categories/apparel.php"><button>Shop Apparel</button></a>
-                    <a href="./product_categories/footwear.php"><button>Shop Footware</button></a>
+                    <a href="./apparel.php"><button>Shop Apparel</button></a>
                 </div>
             </div>
             <div class="latest">
@@ -112,9 +106,12 @@ session_start();
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-content">
-            <p>&copy; 2023 Daryl & Keith Fashion</p>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer-content">
+                <p>&copy; 2023 Daryl & Keith Fashion</p>
+            </div>
         </div>
-    </div>
+    </footer>
 </body>

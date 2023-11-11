@@ -21,14 +21,13 @@ body {
   align-items: center;
   justify-content: flex-end;
   background-color: #cfcfc4;
-  height: 40px;
+  height: 60px;
 }
 
 .top-bar a {
   margin-right: 30px;
   color: #000000;
   text-decoration: none;
-  margin-left: -20px;
 }
 
 .top-bar img {
@@ -164,16 +163,14 @@ nav a:hover {
   color: #333;
 }
 
-.profile-dropdown .profile-dropdown-content {
+.profile-dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
-  z-index: 1;
-  transition: all 0.3s; /* Add a smooth transition for all properties */
-  transform: scale(0);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Increase the z-index value */
 }
 
 .profile-dropdown .profile-dropdown-content a {
@@ -185,13 +182,4 @@ nav a:hover {
 
 .profile-dropdown:hover .profile-dropdown-content {
   display: block;
-  top: 110%;
-  transform: scale(1); /* Scale up to 1 (original size) */
-  box-shadow: 0px 12px 20px 0px rgba(0, 0, 0, 0.4); /* Adjust the box-shadow */
-  background-color: #fff;
-  margin-right: 15px;
-}
-
-.profile-dropdown .profile-dropdown-content a:hover {
-  background-color: #ddd; /* Background color on hover */
 }

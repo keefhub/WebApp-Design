@@ -15,7 +15,7 @@ $conn = new mysqli('localhost', 'root', '', 'webapp');
 if ($conn->connect_error) {
     die("connection failed: " . $conn->connect_error);
 } else {
-    $result = $conn->prepare("INSERT INTO profile (`username`, `password`, `email`, `mobileNumber`, `address`) VALUES (?, ?, ?, ?, ?)");
+    $result = $conn->prepare("INSERT INTO profile (`name`, `password`, `email`, `contact_number`, `address`) VALUES (?, ?, ?, ?, ?)");
     $result->bind_param("sssis", $username, $password, $email, $mobileNumber, $address);
     if ($result->execute()) {
         // User registration successful, create a session
@@ -23,7 +23,7 @@ if ($conn->connect_error) {
         $_SESSION['valid_id'] = $result->insert_id; // Get the user's ID
 
         // Redirect to the homepage or another appropriate page
-        header("Location: ../homepage.php");
+        header("Location: ./homepage.php");
         exit;
     } else {
         echo 'Error registering the user. Please try again.<br>';

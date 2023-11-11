@@ -1,8 +1,0 @@
-@font-face {
-  font-family: "Merriweather";
-  src: url("../../components/font/Merriweather/Merriweather-Regular.ttf");
-}
-
-* {
-  font-family: "CustomFont", Merriweather, serif;
-}

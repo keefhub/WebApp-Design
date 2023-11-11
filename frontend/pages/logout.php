@@ -12,7 +12,7 @@ session_destroy();
 
 <head>
     <title>Logout</title>
-    <link rel="stylesheet" href="./App.css" />
+    <link rel="stylesheet" href="./stylesheet/app.css" />
     <link rel="stylesheet" href="./stylesheet/logout.css" />
     <link rel="stylesheet" href="./stylesheet/footer.css" />
     <meta charset="utf-8" />

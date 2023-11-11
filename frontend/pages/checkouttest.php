@@ -119,11 +119,11 @@ if (!isset($_SESSION['valid_user'])) {
                     echo "<p>Price: $$product_price</p>";
                     echo "<p>Quantity: $quantity</p>";
                     echo '<div class="quantity">';
-                    echo '<button class="quantity-button" data-action="decrease" data-product-id="'.$product_id.'" data-size="'.$size.'" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'decrease\')">-</button>';
-                    echo "<span data-product-id=\"$product_id\" data-size=\"$size\">$quantity</span>";
-                    echo '<button class="quantity-button" data-action="increase" data-product-id="'.$product_id.'" data-size="'.$size.'" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'increase\')">+</button>';
+                    echo '<button class="quantity-button" data-action="decrease">-</button>';
+                    echo "<span>$quantity</span>";
+                    echo '<button class="quantity-button" data-action="increase">+</button>';
                     echo '</div>';
-                    echo '<button class="remove-button" data-action="remove" data-product-id="'.$product_id.'" data-size="'.$size.'" onclick="removeItem('.$product_id.', \''.$size.'\', this)">Remove</button>';
+                    echo '<button class="remove-button">Remove</button>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -136,6 +136,7 @@ if (!isset($_SESSION['valid_user'])) {
         </div>
     </main>
     </div>
+
   <footer>
     <div class="footer">
       <div class="footer-content">
@@ -143,6 +144,4 @@ if (!isset($_SESSION['valid_user'])) {
       </div>
     </div>
   </footer>
-  <script type="text/javascript" src="./checkout.js"></script>
 </body>
-</html>
