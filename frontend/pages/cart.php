@@ -17,6 +17,7 @@ if (!isset($_SESSION['valid_user'])) {
 </head>
 
 <body>
+<<<<<<< HEAD
 <div class="header">
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
@@ -39,7 +40,30 @@ if (!isset($_SESSION['valid_user'])) {
             </div>
         </div>
 
+=======
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
   <div class="body">
+    <div class="header">
+      <div class="logo">
+        <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+      </div>
+      <div class="top-bar">
+        <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+        <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
+?>
+
+      </div>
+    </div>
     <div class="nav">
       <nav>
         <ul>
@@ -83,9 +107,10 @@ if (!isset($_SESSION['valid_user'])) {
       </script>
     </div>
     <div>
-    <main>
+      <main>
         <h2>Your Cart</h2>
         <div class="cart-container">
+<<<<<<< HEAD
             <?php
             $mysqli = new mysqli("localhost", "root", "", "webapp");
 
@@ -94,54 +119,77 @@ if (!isset($_SESSION['valid_user'])) {
             }
             
             $query = "SELECT * FROM inventory";
+=======
+          <?php
 
-            $result = $mysqli->query($query);
+        $mysqli = new mysqli("localhost", "root", "", "webapp");
 
-            $apparelData = array();
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+// Query to retrieve apparel data
+$query = "SELECT * FROM inventory";
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
 
-            while ($row = $result->fetch_assoc()) {
-                $apparelData[] = $row;
-            }
+$result = $mysqli->query($query);
 
-            $mysqli->close();
+$apparelData = array();
 
-            $totalCost = 0;
+while ($row = $result->fetch_assoc()) {
+    $apparelData[] = $row;
+}
 
+$mysqli->close();
+
+$totalCost = 0;
+
+<<<<<<< HEAD
             if (!empty($_SESSION['cart'])) {
                 foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
                 foreach ($product_sizes as $size => $quantity) {
 
                     $product_name = $apparelData["$product_id"-1]["itemname"];
                     $product_price = $apparelData["$product_id"-1]["price"];
+=======
 
-                    $subtotal = $product_price * $quantity;
-                    $totalCost += $subtotal; // Update total cost
+if (!empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
+        foreach ($product_sizes as $size => $quantity) {
 
-                    echo '<div class="cart-item">';
-                    echo '<img class="product-image" src="../components/images/products/' . $product_id . '.jpeg" alt=" alt="' . $product_name .'">';
-                    echo '<div class="product-details">';
-                    echo "<h3>$product_name (Size: $size)</h3>";
-                    echo "<p>Price: $$product_price</p>";
-                    echo '<div class="quantity">';
-                    echo '<button class="quantity-button" data-action="decrease" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'decrease\')">-</button>';
-                    echo "<span>Quantity:</span><span data-product-id=\"$product_id\" data-size=\"$size\">$quantity</span>";
-                    echo '<button class="quantity-button" data-action="increase" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'increase\')">+</button>';
-                    echo '</div>';
-                    echo '<div class="subtotal-box">';
-                    echo '<p>Subtotal: $' . number_format($subtotal, 2) . '</p>';
-                    echo '</div>';
-                    echo '<div>';
-                    echo '<button class="remove-button" data-action="remove" data-product-id="'.$product_id.'" data-size="'.$size.'" onclick="removeItem('.$product_id.', \''.$size.'\', this)">Remove</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }}
-            } else {
-                echo '<p>Your cart is empty.</p>';
-            }
-            ?>
+            // Access product details and display them as needed
+            $product_name = $apparelData["$product_id"-1]["itemname"];
+            $product_price = $apparelData["$product_id"-1]["price"];
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
+
+            $subtotal = $product_price * $quantity;
+            $totalCost += $subtotal; // Update total cost
+
+            echo '<div class="cart-item">';
+            echo '<img class="product-image" src="../components/images/products/' . $product_id . '.jpeg" alt=" alt="' . $product_name .'">';
+            echo '<div class="product-details">';
+            echo "<h3>$product_name (Size: $size)</h3>";
+            echo "<p>Price: $$product_price</p>";
+            echo '<div class="quantity">';
+            echo '<button class="quantity-button" data-action="decrease" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'decrease\')">-</button>';
+            echo "<span>Quantity:</span><span data-product-id=\"$product_id\" data-size=\"$size\">$quantity</span>";
+            echo '<button class="quantity-button" data-action="increase" onclick="updateQuantity('.$product_id.', \''.$size.'\', \'increase\')">+</button>';
+            echo '</div>';
+            echo '<div class="subtotal-box">';
+            echo '<p>Subtotal: $' . number_format($subtotal, 2) . '</p>';
+            echo '</div>';
+            echo '<div>';
+            echo '<button class="remove-button" data-action="remove" data-product-id="'.$product_id.'" data-size="'.$size.'" onclick="removeItem('.$product_id.', \''.$size.'\', this)">Remove</button>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+} else {
+    echo '<p>Your cart is empty.</p>';
+}
+?>
         </div>
-          <div>
+        <div>
           <div class="total-box">
             <h3>Total Cost</h3>
             <p>$<?php echo number_format($totalCost, 2); ?></p>
@@ -159,15 +207,16 @@ if (!isset($_SESSION['valid_user'])) {
             <button class="checkout-button" id="checkoutbtn" onclick="checkout(<?php echo $cart; ?>)">Checkout</button>
           </div>
         </div>
-    </main>
+      </main>
     </div>
-  <footer>
-    <div class="footer">
-      <div class="footer-content">
-        <p>&copy; 2023 Daryl & Keith Fashion</p>
+    <footer>
+      <div class="footer">
+        <div class="footer-content">
+          <p>&copy; 2023 Daryl & Keith Fashion</p>
+        </div>
       </div>
-    </div>
-  </footer>
-  <script type="text/javascript" src="./cart.js"></script>
+    </footer>
+    <script type="text/javascript" src="./cart.js"></script>
 </body>
+
 </html>

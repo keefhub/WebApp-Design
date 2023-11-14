@@ -29,11 +29,16 @@ session_destroy();
 
     </div>
     </div>
+<<<<<<< HEAD
     <div class="body">
         <h1>Log out</h1>
         <a href="./homepage.php">Back to Home</a> <br />
 
         <?php
+=======
+    <h1>Log out</h1>
+    <?php
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
         if(!empty($old_user)) {
             echo 'Logged out.<br />';
             echo 'Back to log in page <a href="homepage.php">here</a>';

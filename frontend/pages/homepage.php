@@ -15,7 +15,11 @@ session_start();
 
 <body>
     <div class="body">
+<<<<<<< HEAD
     <div class="header">
+=======
+        <div class="header">
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
             </div>
@@ -110,7 +114,7 @@ session_start();
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div class="footer">
             <div class="footer-content">

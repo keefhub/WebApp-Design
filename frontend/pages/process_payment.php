@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $mysqli = new mysqli("localhost", "root", "", "webapp");
@@ -41,6 +42,7 @@ foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
     }
 }
 
+<<<<<<< HEAD
 $query3 = "SELECT * FROM inventory";
 
 $result3 = $mysqli->query($query3);
@@ -74,15 +76,17 @@ if ($mysqli->query($sql) === TRUE) {
     mail($to, $subject, $message, $headers);
 
 
+=======
+if ($mysqli->query($sql) === true) {
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     echo '<script>';
     echo 'alert("Payment complete. Your order will be shipped as soon as possible. A confirmation email has been sent to you.");';
     echo 'window.location.href = "./homepage.php";';
     echo '</script>';
     unset($_SESSION['cart']);
-    
+
 } else {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
 $mysqli->close();
-?>

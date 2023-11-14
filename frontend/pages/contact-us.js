@@ -41,7 +41,11 @@ function ContactNumberValidation() {
   var contactnumberInput = document.getElementById("contact");
   var contactnumber = contactnumberInput.value;
 
+<<<<<<< HEAD
   if (!contactnumber.match(/^[0-9]{8}$/)) {
+=======
+  if (!contactnumber.match(/^[0-9]{10}$/)) {
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     contactnumberInput.style.borderColor = "red";
     contactnumberInput.style.borderWidth = "2px";
     displayError("Invalid Contact Number", "errorContactNumber");
@@ -54,12 +58,38 @@ function ContactNumberValidation() {
   }
 }
 
+<<<<<<< HEAD
+=======
+function MessageValidation() {
+  var messageInput = document.getElementById("message");
+  var message = messageInput.value;
+
+  if (!message.match(/^[A-Za-z\s]+$/)) {
+    messageInput.style.borderColor = "red";
+    messageInput.style.borderWidth = "2px";
+    displayError("Invalid Message", "errorMessage");
+    return false;
+  } else {
+    messageInput.style.borderColor = "green";
+    messageInput.style.borderWidth = "2px";
+    displayError("", "errorMessage");
+    return true;
+  }
+}
+
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
 function validateForm() {
   var isNameValid = validateName();
   var isContactNumberValid = validateContactNumber();
   var isEmailValid = validateEmail();
+<<<<<<< HEAD
 
   if (isNameValid && isContactNumberValid && isEmailValid) {
+=======
+  var isMessageValid = validateMessage();
+
+  if (isNameValid && isContactNumberValid && isEmailValid && isMessageValid) {
+>>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     return true;
   } else {
     return false;
