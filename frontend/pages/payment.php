@@ -18,7 +18,6 @@ if (!isset($_SESSION['valid_user'])) {
 </head>
 
 <body>
-<<<<<<< HEAD
 <div class="header">
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
@@ -26,15 +25,6 @@ if (!isset($_SESSION['valid_user'])) {
             <div class="top-bar">
                 <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
                 <?php
-=======
-  <div class="header">
-    <div class="logo">
-      <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
-    </div>
-    <div class="top-bar">
-      <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-      <?php
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
         if (isset($_SESSION['valid_user'])) {
             echo '<div class="profile-dropdown">';
             echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
@@ -46,16 +36,10 @@ if (!isset($_SESSION['valid_user'])) {
             echo '<a href="./loginpage.html">Login</a>';
         }
 ?>
-<<<<<<< HEAD
 
             </div>
         </div>
 
-=======
-
-    </div>
-  </div>
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
   <div class="body">
     <div class="nav">
       <nav>
@@ -71,11 +55,7 @@ if (!isset($_SESSION['valid_user'])) {
         <h2>Payment Information</h2>
         <form action="process_payment.php" method="post" onsubmit="return PaymentValidation()">
           <label for="card_number">Card Number:</label>
-<<<<<<< HEAD
           <input type="number" min="0" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
-=======
-          <input type="number" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
           <br />
           <span id="errorCardNumber" class="error"></span>
           <br />
@@ -87,11 +67,7 @@ if (!isset($_SESSION['valid_user'])) {
           <br />
 
           <label for="cvv">CVV:</label>
-<<<<<<< HEAD
           <input type="number" min="0" id="cvv" name="cvv" oninput="CvvValidation()" required>
-=======
-          <input type="number" id="cvv" name="cvv" oninput="CvvValidation()" required>
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
           <br />
           <span id="errorCvv" class="error"></span>
           <br />

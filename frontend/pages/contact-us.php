@@ -10,23 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to = 'f32ee@localhost';
     $subject = 'Contact Us Query';
     $message = "Name: $name\nContact Number: $contactNumber\nEmail: $email\nMessage:\n$message";
-<<<<<<< HEAD
     $headers = 'From: f32ee@localhost' . "\r\n" . 'Reply-To: f32ee@localhost' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
     
     mail($to, $subject, $message, $headers, '-ff32ee@localhost');
 
     header('Location: thank-you.php');
     exit;
-=======
-    if (empty($name) || empty($contactNumber) || empty($email) || empty($message)) {
-        // Handle invalid form data, e.g., redirect back to the form with an error message
-        $_SESSION['error_message'] = 'Please fill in all the required fields.';
-        header('Location: your-form-page.php');
-        exit;
-    }
-    // You can use mail() function to send the email
-    mail($to, $subject, $message);
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
 }
 ?>
 
@@ -45,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
   <div class="body">
-<<<<<<< HEAD
   <div class="header">
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
@@ -53,15 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="top-bar">
                 <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
                 <?php
-=======
-    <div class="header">
-      <div class="logo">
-        <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
-      </div>
-      <div class="top-bar">
-        <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-        <?php
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
         if (isset($_SESSION['valid_user'])) {
             echo '<div class="profile-dropdown">';
             echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
@@ -74,14 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 ?>
 
-<<<<<<< HEAD
             </div>
         </div>
 
-=======
-      </div>
-    </div>
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     <div class="nav">
       <nav>
         <ul>
@@ -105,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <br />
       <div>
-
+        
       </div>
 
       <script>
@@ -130,7 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         showSlides();
       </script>
-<<<<<<< HEAD
   </div>
   <div class="main-content">
     <h1>Contact Us</h1>
@@ -165,44 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="footer-content">
         <p>&copy; 2023 Daryl & Keith Fashion</p>
       </div>
-=======
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     </div>
-    <div class="main-content">
-      <h1>Contact Us</h1>
-      <p>Have questions or feedback? Please fill out the form below:</p>
-      <form method="POST" action="contact-us.php" onsubmit="return validateForm()">
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" oninput="NameValidation()" required><br>
-        <br />
-        <span id="errorName" class="error"></span>
-        <br />
-        <label for="contactNumber">Contact Number:</label>
-        <input type="tel" name="contactNumber" oninput="ContactNumberValidation()" id="contact" required><br>
-        <br />
-        <span id="errorContactNumber" class="error"></span>
-        <br />
-        <label for="email">Email:</label>
-        <input type="email" name="email" oninput="EmailValidation()" id="emailaddress" required><br>
-        <br />
-        <span id="errorEmail" class="error"></span>
-        <br />
-        <label for="message">Message:</label>
-        <textarea name="message" rows="4" max="300" oninput="MessageValidation()" id="message" required></textarea><br>
-        <br />
-        <span id="errorMessage" class="error"></span>
-        <br />
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-
-    <footer>
-      <div class="footer">
-        <div class="footer-content">
-          <p>&copy; 2023 Daryl & Keith Fashion</p>
-        </div>
-      </div>
-    </footer>
+  </footer>
 </body>
 
 </html>

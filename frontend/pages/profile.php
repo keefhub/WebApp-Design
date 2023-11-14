@@ -42,11 +42,7 @@ $conn->close();
 
 <body>
     <div class="body">
-<<<<<<< HEAD
     <div class="header">
-=======
-        <div class="header">
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
             </div>
@@ -138,91 +134,82 @@ $conn->close();
                             <?php
 
                                 echo '<div class="profile-content">';
-echo '<h3>Mobile Number: &nbsp;' , $mobileNumber, '</span></h3>';
-echo '<h3>Registered Email: &nbsp;' , $email, '</span></h3>';
-echo '<h3>Home Address: &nbsp;' , $address, '</span></h3>';
-echo '</div>';?>
+                                echo '<h3>Mobile Number: &nbsp;' , $mobileNumber, '</span></h3>';
+                                echo '<h3>Registered Email: &nbsp;' , $email, '</span></h3>';
+                                echo '<h3>Home Address: &nbsp;' , $address, '</span></h3>';
+                                echo '</div>';?>
                         </div>
                         <div id="tab2" class="tabcontent">
                             <div class="cart-container">
                                 <?php
 
-$mysqli = new mysqli("localhost", "root", "", "webapp");
+                                $mysqli = new mysqli("localhost", "root", "", "webapp");
 
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
+                                if ($mysqli->connect_error) {
+                                    die("Connection failed: " . $mysqli->connect_error);
+                                }
 
-$query = "SELECT * FROM inventory";
+                                $query = "SELECT * FROM inventory";
 
-$result = $mysqli->query($query);
+                                $result = $mysqli->query($query);
+                    
+                                $apparelData = array();
+                    
+                                while ($row = $result->fetch_assoc()) {
+                                    $apparelData[] = $row;
+                                }
+                                
+                                $query2 = "SELECT * FROM orders WHERE userid = ".$_SESSION["valid_id"]."";
 
-$apparelData = array();
+                                $result2 = $mysqli->query($query2);
 
-while ($row = $result->fetch_assoc()) {
-    $apparelData[] = $row;
-}
+                                $purchasedata = array();
 
-$query2 = "SELECT * FROM orders WHERE userid = ".$_SESSION["valid_id"]."";
+                                while ($row = $result2->fetch_assoc()) {
+                                    $purchasedata[] = $row;
+                                }
 
-$result2 = $mysqli->query($query2);
+                                $mysqli->close();
 
-$purchasedata = array();
+                                if (!empty($purchasedata)) {
+                                    foreach ($purchasedata as $purchase) {
 
-<<<<<<< HEAD
                                         $product_name = $apparelData[$purchase['userid']]["itemname"];
                                         $product_price = $apparelData[$purchase['userid']]["price"];
                                         $product_id = $purchase['itemid'];
                                         $quantity = $purchase['quantity'];
                                         $size = $purchase['itemsize'];
-=======
-while ($row = $result2->fetch_assoc()) {
-    $purchasedata[] = $row;
-}
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
 
-$mysqli->close();
+                                        $subtotal = $product_price * $purchase['quantity'];
 
-if (!empty($purchasedata)) {
-    foreach ($purchasedata as $purchase) {
-
-        // Access product details and display them as needed
-        $product_name = $apparelData[$purchase['userid']]["itemname"];
-        $product_price = $apparelData[$purchase['userid']]["price"];
-        $product_id = $purchase['itemid'];
-        $quantity = $purchase['quantity'];
-        $size = $purchase['itemsize'];
-
-        $subtotal = $product_price * $purchase['quantity'];
-
-        echo '<div class="cart-item">';
-        echo '<img class="product-image" src="../components/images/products/' . $product_id . '.jpeg" alt=" alt="' . $product_name .'">';
-        echo '<div class="product-details">';
-        echo "<h3>$product_name (Size: $size)</h3>";
-        echo "<p>Price: $$product_price</p>";
-        echo '<div class="quantity">';
-        echo "<span>Quantity:</span><span data-product-id=\"$product_id\" data-size=\"$size\">$quantity</span>";
-        echo '</div>';
-        echo '<div class="subtotal-box">';
-        echo '<p>Subtotal: $' . number_format($subtotal, 2) . '</p>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-    }
-} else {
-    echo '<p>You have not purchased anything.</p>';
-}
-?>
-                            </div>
-
+                                        echo '<div class="cart-item">';
+                                        echo '<img class="product-image" src="../components/images/products/' . $product_id . '.jpeg" alt=" alt="' . $product_name .'">';
+                                        echo '<div class="product-details">';
+                                        echo "<h3>$product_name (Size: $size)</h3>";
+                                        echo "<p>Price: $$product_price</p>";
+                                        echo '<div class="quantity">';
+                                        echo "<span>Quantity:</span><span data-product-id=\"$product_id\" data-size=\"$size\">$quantity</span>";
+                                        echo '</div>';
+                                        echo '<div class="subtotal-box">';
+                                        echo '<p>Subtotal: $' . number_format($subtotal, 2) . '</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+                                } else {
+                                    echo '<p>You have not purchased anything.</p>';
+                                }
+                                ?>
                         </div>
-                        <script src="profile.js"></script>
+
                     </div>
-                    <div class="footer">
-                        <div class="footer-content">
-                            <p>&copy; 2023 Daryl & Keith Fashion</p>
-                        </div>
+                    <script src="profile.js"></script>
+                </div>
+                <div class="footer">
+                    <div class="footer-content">
+                        <p>&copy; 2023 Daryl & Keith Fashion</p>
                     </div>
+                </div>
 
             </body>
 

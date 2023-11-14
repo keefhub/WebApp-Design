@@ -58,11 +58,7 @@ function EmailValidation() {
   var emailInput = document.getElementById("emailaddress");
   var email = emailInput.value;
 
-<<<<<<< HEAD
   if (!email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]/)) {
-=======
-  if (!email.match(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/)) {
->>>>>>> 321b338b68fc0d7c0166034facbd35e6fef0ec22
     emailInput.style.borderColor = "red";
     emailInput.style.borderWidth = "2px";
     displayError("Invalid Email", "errorEmail");

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve shipping information from the form
@@ -13,6 +12,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Redirect to a confirmation page or perform other actions
     header("Location: payment.php");
     exit();
-} else {
-    echo "Invalid request";
 }
+?>
