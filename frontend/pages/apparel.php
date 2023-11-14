@@ -16,7 +16,7 @@ session_start();
   <header>
     <!-- Header content, including navigation and logo -->
     <div class="top-bar">
-      <a href="./checkoutPage.php"><img src="./../components/icons/shopping-bag.png" alt="cart" /></a>
+      <a href="./cart.php"><img src="./../components/icons/shopping-bag.png" alt="cart" /></a>
       <?php
             if (isset($_SESSION['valid_user'])) {
                 echo '<div class="profile-dropdown">';

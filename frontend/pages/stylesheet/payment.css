@@ -22,6 +22,7 @@ form {
   background-color: #f4f4f4; /* Adjust background color to fit your theme */
   border: 1px solid #ccc;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 label {
@@ -38,6 +39,7 @@ input {
 }
 
 button {
+  float: right;
   background-color: #007bff; /* Adjust button color to fit your theme */
   color: #fff;
   padding: 10px 20px;
@@ -49,3 +51,27 @@ button {
 button:hover {
   background-color: #0056b3; /* Adjust hover color to fit your theme */
 }
+
+/* Additional styles specific to payment form */
+.payment-details {
+  margin-top: 20px;
+}
+
+.payment-details label {
+  margin-top: 0;
+}
+
+.payment-methods {
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-method {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.payment-method label {
+  display: block;
+}
+

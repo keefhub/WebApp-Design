@@ -18,8 +18,37 @@ CREATE TABLE inventory (
     sizeM int,
     sizeL int,
     brandid int,
-    colourid int,
+    colourid int
 );
+
+CREATE TABLE transaction 
+(
+    orderno int primary key auto_increment,
+    userid int not null,
+    name VARCHAR(40) not null,
+    emailadd VARCHAR(40) not null,
+    address VARCHAR(40) not null,
+    city VARCHAR(40) not null,
+    state VARCHAR(40) not null,
+    zip int not null,
+    ccno int not null,
+    expdate VARCHAR(40) not null,
+    cvv int not null
+);
+
+
+
+CREATE TABLE orders 
+(
+    id int primary key auto_increment,
+    userid int,
+    orderno int,
+    itemid int,
+    itemsize VARCHAR(40) not null,
+    quantity int
+);
+
+
 
 INSERT INTO inventory VALUES 
     (1, 'White shirt', 10, 12, 2, 4, 1, 4),

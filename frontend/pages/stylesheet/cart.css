@@ -1,0 +1,144 @@
+h2 {
+  margin-left: 40px;
+  margin-bottom: 0px;
+}
+.cart-container {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Style each cart item */
+.cart-item {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.item-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-button {
+  float: right;
+  background-color: #0c0c0c;
+  color: white;
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.quantity-button:hover {
+  background-color: #d30303;
+}
+
+.remove-button {
+  background-color: #161616;
+  color: white;
+  padding: 8px 12px;
+  float: right;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.remove-button:hover {
+  background-color: #810303;
+}
+
+.product-image {
+  width: 250px;
+}
+
+.product-details {
+  width: 500px;
+}
+
+/* Style the subtotal and total boxes */
+.subtotal-box {
+  margin-top: 10px;
+}
+
+
+.subtotal-box p{
+  text-align: right;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+
+.total-box {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.total-box p{
+  text-align: right;
+  margin-right: 35px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+.total-box h3{
+  text-align: right;
+  margin-right: 35px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20px;
+}
+
+/* Style the checkout button container */
+.checkout-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-right: 35px;
+}
+
+.checkout-button {
+  background-color: #0c0c0c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #d30303;
+}

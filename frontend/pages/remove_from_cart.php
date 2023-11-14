@@ -8,7 +8,10 @@ if (isset($_POST['product_id']) && isset($_POST['size'])) {
     if (isset($_SESSION['cart'][$product_id][$size])) {
         unset($_SESSION['cart'][$product_id][$size]);
 
-        // If the item is removed, you might want to redirect back to the cart page or do additional processing.
+        if (empty($_SESSION['cart'][$product_id])) {
+            unset($_SESSION['cart'][$product_id]);
+        }
+
         header('Location: checkoutPage.php');
         exit;
     }
