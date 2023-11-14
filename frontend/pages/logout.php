@@ -19,6 +19,14 @@ session_destroy();
 </head>
 
 <body>
+    <div class="header">
+        <div class="logo">
+            <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+        </div>
+
+
+    </div>
+    </div>
     <h1>Log out</h1>
     <?php
         if(!empty($old_user)) {

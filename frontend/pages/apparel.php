@@ -17,21 +17,26 @@ session_start();
 <body>
   <header>
     <!-- Header content, including navigation and logo -->
-    <div class="top-bar">
-      <a href="./cart.php"><img src="./../components/icons/shopping-bag.png" alt="cart" /></a>
-      <?php
-            if (isset($_SESSION['valid_user'])) {
-                echo '<div class="profile-dropdown">';
-                echo '<a href="./profile.php">' .$_SESSION['valid_user'] . '</a>';
-                echo '<div class="profile-dropdown-content">';
-                echo '<a href="./logout.php">Logout</a>';
-                echo '</div>';
-                echo '</div>';
-            } else {
-                echo '<a href="./loginpage.html">Login</a>';
-            }
-
+    <div class="header">
+      <div class="logo">
+        <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+      </div>
+      <div class="top-bar">
+        <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+        <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
 ?>
+
+      </div>
     </div>
     <div class="nav">
       <nav>
