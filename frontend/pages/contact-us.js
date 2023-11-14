@@ -41,7 +41,7 @@ function ContactNumberValidation() {
   var contactnumberInput = document.getElementById("contact");
   var contactnumber = contactnumberInput.value;
 
-  if (!contactnumber.match(/^[0-9]{10}$/)) {
+  if (!contactnumber.match(/^[0-9]{8}$/)) {
     contactnumberInput.style.borderColor = "red";
     contactnumberInput.style.borderWidth = "2px";
     displayError("Invalid Contact Number", "errorContactNumber");
@@ -54,30 +54,12 @@ function ContactNumberValidation() {
   }
 }
 
-function MessageValidation() {
-  var messageInput = document.getElementById("message");
-  var message = messageInput.value;
-
-  if (!message.match(/^[A-Za-z\s]+$/)) {
-    messageInput.style.borderColor = "red";
-    messageInput.style.borderWidth = "2px";
-    displayError("Invalid Message", "errorMessage");
-    return false;
-  } else {
-    messageInput.style.borderColor = "green";
-    messageInput.style.borderWidth = "2px";
-    displayError("", "errorMessage");
-    return true;
-  }
-}
-
 function validateForm() {
   var isNameValid = validateName();
   var isContactNumberValid = validateContactNumber();
   var isEmailValid = validateEmail();
-  var isMessageValid = validateMessage();
 
-  if (isNameValid && isContactNumberValid && isEmailValid && isMessageValid) {
+  if (isNameValid && isContactNumberValid && isEmailValid) {
     return true;
   } else {
     return false;

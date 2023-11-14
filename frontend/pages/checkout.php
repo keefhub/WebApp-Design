@@ -18,15 +18,13 @@ if (!isset($_SESSION['valid_user'])) {
 </head>
 
 <body>
-  </div>
-  <div class="body">
-    <div class="header">
-      <div class="logo">
-        <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
-      </div>
-      <div class="top-bar">
-        <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-        <?php
+<div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
         if (isset($_SESSION['valid_user'])) {
             echo '<div class="profile-dropdown">';
             echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
@@ -39,8 +37,10 @@ if (!isset($_SESSION['valid_user'])) {
         }
 ?>
 
-      </div>
-    </div>
+            </div>
+        </div>
+
+  <div class="body">
     <div class="nav">
       <nav>
         <ul>
@@ -82,7 +82,7 @@ if (!isset($_SESSION['valid_user'])) {
           <br />
 
           <label for="zip">ZIP Code:</label>
-          <input type="number" id="zip" name="zip" oninput="ZipCodeValidation()" required>
+          <input type="number" min="0" id="zip" name="zip" oninput="ZipCodeValidation()" required>
           <br />
           <span id="errorZipCode" class="error"></span>
           <br />

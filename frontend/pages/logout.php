@@ -1,8 +1,10 @@
 <?php
 
 session_start();
-$old_user = $_SESSION['valid_user'];
-$old_id = $_SESSION['valid_id'];
+if (isset($_SESSION['valid_user'])) {
+    $old_user = $_SESSION['valid_user'];
+    $old_id = $_SESSION['valid_id'];
+}
 unset($_SESSION['valid_id']);
 unset($_SESSION['valid_user']);
 session_destroy();
@@ -37,7 +39,7 @@ session_destroy();
             echo 'Back to log in page <a href="homepage.php">here</a>';
         } else {
             echo 'You were not logged in, and so have not been logged out.<br />';
-            echo 'Back to log in page <a href="homepage.php">here</a>';
+            echo 'Back to log in page <a href="loginpage.html">here</a>';
         }
 ?>
     </div>

@@ -1,0 +1,185 @@
+/* this CSS is general CSS, i.e., nav bar and auto-scrolling banner. */
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("../components/font/Merriweather/Merriweather-Regular.ttf");
+}
+
+* {
+  font-family: "CustomFont", Merriweather, serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #cfcfc4;
+  height: 60px;
+}
+
+.top-bar a {
+  margin-right: 30px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.top-bar img {
+  width: 40px;
+  height: 30px;
+  margin-left: 20px;
+  border-right: 2px solid #000000;
+  padding-right: 10px;
+}
+
+nav {
+  text-align: center;
+  top: 0;
+  width: 100%;
+  background: white;
+  z-index: 100;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 24px 32px;
+}
+
+nav a:hover {
+  border-bottom: solid 2px #000000;
+  color: #000000;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown content on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.mySlides {
+  display: none;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  height: 50px;
+  background-color: #cfcfc4;
+  margin-top: 5px;
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*for the dropdown when user hover over their profile*/
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown-content {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-dropdown a {
+  text-decoration: none;
+  color: #333;
+}
+
+.profile-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  right: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Increase the z-index value */
+}
+
+.profile-dropdown .profile-dropdown-content a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.profile-dropdown:hover .profile-dropdown-content {
+  display: block;
+}

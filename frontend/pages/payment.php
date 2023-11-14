@@ -18,13 +18,13 @@ if (!isset($_SESSION['valid_user'])) {
 </head>
 
 <body>
-  <div class="header">
-    <div class="logo">
-      <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
-    </div>
-    <div class="top-bar">
-      <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-      <?php
+<div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
         if (isset($_SESSION['valid_user'])) {
             echo '<div class="profile-dropdown">';
             echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
@@ -37,8 +37,9 @@ if (!isset($_SESSION['valid_user'])) {
         }
 ?>
 
-    </div>
-  </div>
+            </div>
+        </div>
+
   <div class="body">
     <div class="nav">
       <nav>
@@ -54,7 +55,7 @@ if (!isset($_SESSION['valid_user'])) {
         <h2>Payment Information</h2>
         <form action="process_payment.php" method="post" onsubmit="return PaymentValidation()">
           <label for="card_number">Card Number:</label>
-          <input type="number" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
+          <input type="number" min="0" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
           <br />
           <span id="errorCardNumber" class="error"></span>
           <br />
@@ -66,7 +67,7 @@ if (!isset($_SESSION['valid_user'])) {
           <br />
 
           <label for="cvv">CVV:</label>
-          <input type="number" id="cvv" name="cvv" oninput="CvvValidation()" required>
+          <input type="number" min="0" id="cvv" name="cvv" oninput="CvvValidation()" required>
           <br />
           <span id="errorCvv" class="error"></span>
           <br />

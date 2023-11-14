@@ -15,7 +15,7 @@ session_start();
 
 <body>
     <div class="body">
-        <div class="header">
+    <div class="header">
             <div class="logo">
                 <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
             </div>
@@ -98,8 +98,6 @@ session_start();
                 <h3>The Latest</h3>
                 <div class="image" style="display: flex; align-items: center">
                     <img src="../components/images/latestTrend.png" />
-
-                    <input type="button" value="Get It First" class="get-it-button" />
                 </div>
                 <div class="tagline">
                     <h1>
@@ -112,7 +110,7 @@ session_start();
             </div>
         </div>
     </div>
-
+    
     <footer>
         <div class="footer">
             <div class="footer-content">
