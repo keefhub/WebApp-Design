@@ -1,8 +1,31 @@
+<?php
+session_start();
+
+$mysqli = new mysqli('localhost', 'root', '', 'webapp');
+
+if ($mysqli->connect_error) {
+    die('Connection failed: ' . $mysqli->connect_error);
+}
+
+$product_id = isset($_GET["itemid"]) ? $_GET["itemid"] : null;
+
+if ($product_id) {
+  // Query to retrieve product details by product ID
+  $query = "SELECT * FROM inventory WHERE itemid = $product_id";
+
+  $result = $mysqli->query($query);
+
+  if ($result && $result->num_rows > 0) {
+      $product = $result->fetch_assoc();
+      $productname = $product["itemname"];
+  }}
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Product - Example</title>
+  <title><?php echo "$productname"; ?></title>
   <link rel='stylesheet' href='./stylesheet/app.css' />
   <link rel='stylesheet' href='./stylesheet/product.css' />
   <link rel='stylesheet' href='./stylesheet/footer.css' />
@@ -11,23 +34,28 @@
 
 <body>
   <header>
-    <!-- Header content, including navigation and logo -->
-    <div class='top-bar'>
-      <a href='./cart.php'><img src='../components/icons/shopping-bag.png' alt='cart' /></a>
-      <?php
-            if (isset($_SESSION["valid_user"])) {
-                echo "<div class='profile-dropdown'>";
-                echo "<a href='./profile.php'>" .$_SESSION["valid_user"] . "</a>";
-                echo "<div class='profile-dropdown-content'>";
-                echo "<a href='./logout.php'>Logout</a>";
-                echo "</div>";
-                echo "</div>";
-            } else {
-                echo "<a href='./loginpage.html'>Login</a>";
-            }
-
+  <div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
 ?>
-    </div>
+
+            </div>
+        </div>
+
     <div class='nav'>
       <nav>
         <ul>
@@ -78,58 +106,31 @@
   <main>
     <div class='product-detail'>
     <?php
-      // Connect to your database
-      $mysqli = new mysqli('localhost', 'root', '', 'webapp');
-
-      // Check connection
-      if ($mysqli->connect_error) {
-          die('Connection failed: ' . $mysqli->connect_error);
-      }
-
-      $product_id = isset($_GET["itemid"]) ? $_GET["itemid"] : null;
-      
-      if ($product_id) {
-        // Query to retrieve product details by product ID
-        $query = "SELECT * FROM inventory WHERE itemid = $product_id";
-    
-        $result = $mysqli->query($query);
-    
-        if ($result && $result->num_rows > 0) {
-            $product = $result->fetch_assoc();
-            // Display product details
-            echo '<form method="POST" action="addtocart.php">';
-            echo '<input type="hidden" name="product_id" value="'.$product_id.'">';
-            echo '<h1 class="product-name">'.$product["itemname"].'</h1>';
-            echo '<img src="../components/images/products/'.$product["itemid"].'.jpeg" alt="'.$product["itemname"].'">';
-            echo '<p class="product-price">Price: $'.$product["price"].'</p>';
-            echo '<label for="quantity" class="product-quantity">Quantity:</label>';
-            echo '<input type="number" class="product-quantity" name="quantity" id="quantity" value="1" min="1">';
-            echo '<div class="product-sizes">';
-            echo '<label for="size">Size:</label>';
-            echo '<select id="size" name="size">';
-            if ($product["sizeS"] > 0) {
-              echo '<option value="S">S</option>';
-            }
-            if ($product["sizeM"] > 0) {
-              echo '<option value="M">M</option>';
-            }
-            if ($product["sizeL"] > 0) {
-              echo '<option value="L">L</option>';
-            }
-            echo '</select>';
-            echo '</div>';
-            echo '<button class="add-to-cart-button">Add to Cart</button>';
-        } else {
-            echo 'Product not found.';
+        // Display product details
+        echo '<form method="POST" action="addtocart.php">';
+        echo '<input type="hidden" name="product_id" value="'.$product_id.'">';
+        echo '<h1 class="product-name">'.$product["itemname"].'</h1>';
+        echo '<img src="../components/images/products/'.$product["itemid"].'.jpeg" alt="'.$product["itemname"].'">';
+        echo '<p class="product-price">Price: $'.$product["price"].'</p>';
+        echo '<label for="quantity" class="product-quantity">Quantity:</label>';
+        echo '<input type="number" class="product-quantity" name="quantity" id="quantity" value="1" min="1">';
+        echo '<div class="product-sizes">';
+        echo '<label for="size">Size:</label>';
+        echo '<select id="size" name="size">';
+        if ($product["sizeS"] > 0) {
+          echo '<option value="S">S</option>';
         }
-      } else {
-          echo 'Invalid product ID.';
-      }
-
+        if ($product["sizeM"] > 0) {
+          echo '<option value="M">M</option>';
+        }
+        if ($product["sizeL"] > 0) {
+          echo '<option value="L">L</option>';
+        }
+        echo '</select>';
+        echo '</div>';
+        echo '<button class="add-to-cart-button">Add to Cart</button>';
       ?>
-
   </main>
-
   <div class='footer'>
     <div class='footer-content'>
       <p>&copy; 2023 Daryl & Keith Fashion</p>

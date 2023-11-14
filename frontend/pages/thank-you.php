@@ -10,7 +10,6 @@
 
 <body>
   <div class="body">
-    <!-- Your existing header code here -->
   </div>
   <div class="main-content">
     <h1>Thank You for Contacting Us!</h1>

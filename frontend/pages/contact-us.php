@@ -7,14 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $message = $_POST['message'];
 
-    $to = 'webapp@localhost';
+    $to = 'f32ee@localhost';
     $subject = 'Contact Us Query';
     $message = "Name: $name\nContact Number: $contactNumber\nEmail: $email\nMessage:\n$message";
+    $headers = 'From: f32ee@localhost' . "\r\n" . 'Reply-To: f32ee@localhost' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    
+    mail($to, $subject, $message, $headers, '-ff32ee@localhost');
 
-    // You can use mail() function to send the email
-    mail($to, $subject, $message);
-
-    // Redirect to a thank you page or show a confirmation message
     header('Location: thank-you.php');
     exit;
 }
@@ -30,26 +29,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="./stylesheet/app.css" />
   <link rel="stylesheet" href="./stylesheet/footer.css" />
   <link rel="stylesheet" href="./stylesheet/contactus.css" />
+  <script src=contact-us.js defer></script>
 </head>
 
 <body>
   <div class="body">
-    <div class="top-bar">
-      <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-      <?php
-             if (isset($_SESSION['valid_user'])) {
-                 echo '<div class="profile-dropdown">';
-                 echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
-                 echo '<div class="profile-dropdown-content">';
-                 echo '<a href="./logout.php">Logout</a>';
-                 echo '</div>';
-                 echo '</div>';
-             } else {
-                 echo '<a href="./loginpage.html">Login</a>';
-             }
-
+  <div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
 ?>
-    </div>
+
+            </div>
+        </div>
+
     <div class="nav">
       <nav>
         <ul>
@@ -102,18 +108,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="main-content">
     <h1>Contact Us</h1>
     <p>Have questions or feedback? Please fill out the form below:</p>
-    <form method="POST" action="contact-us.php">
-      <label for="name">Name:</label>
-      <input type="text" name="name" required><br>
-      <label for="contactNumber">Contact Number:</label>
-      <input type="tel" name="contactNumber" required><br>
-      <label for="email">Email:</label>
-      <input type="email" name="email" required><br>
-      <label for="message">Message:</label>
-      <textarea name="message" rows="4" required></textarea><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+    <form method="POST" action="contact-us.php" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" oninput="NameValidation()" required><br>
+        <br />
+        <span id="errorName" class="error"></span>
+        <br />
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" name="contactNumber" oninput="ContactNumberValidation()" id="contact" required><br>
+        <br />
+        <span id="errorContactNumber" class="error"></span>
+        <br />
+        <label for="email">Email:</label>
+        <input type="email" name="email" oninput="EmailValidation()" id="emailaddress" required><br>
+        <br />
+        <span id="errorEmail" class="error"></span>
+        <br />
+        <label for="message">Message:</label>
+        <textarea name="message" rows="4" max="300" id="message" required></textarea><br>
+        <br />
+        <span id="errorMessage" class="error"></span>
+        <br />
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   
   <footer>
     <div class="footer">

@@ -14,23 +14,28 @@ session_start();
 </head>
 <body>
   <header>
-    <!-- Header content, including navigation and logo -->
-    <div class="top-bar">
-      <a href="./cart.php"><img src="./../components/icons/shopping-bag.png" alt="cart" /></a>
-      <?php
-            if (isset($_SESSION['valid_user'])) {
-                echo '<div class="profile-dropdown">';
-                echo '<a href="./profile.php">' .$_SESSION['valid_user'] . '</a>';
-                echo '<div class="profile-dropdown-content">';
-                echo '<a href="./logout.php">Logout</a>';
-                echo '</div>';
-                echo '</div>';
-            } else {
-                echo '<a href="./loginpage.html">Login</a>';
-            }
+  <div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
+?>
 
-      ?>
-    </div>
+            </div>
+        </div>
+
     <div class="nav">
       <nav>
         <ul>
@@ -81,7 +86,6 @@ session_start();
   <h2>Clothes</h2>
     <div class="container">
       <aside class="filter-bar">
-        <!-- Filter options go here (e.g., brands, sizes, colors) -->
         <h3>Brands</h3>
         <ul>
           <li><input class="filter" type="checkbox" name="brand" value="1"> X Clothes</li>
@@ -100,10 +104,8 @@ session_start();
       </aside>
       <section class="product-list" id="apparel-list">
       <?php
-      // Connect to your database
       $mysqli = new mysqli("localhost", "root", "", "webapp");
 
-      // Check connection
       if ($mysqli->connect_error) {
           die("Connection failed: " . $mysqli->connect_error);
       }
@@ -114,14 +116,12 @@ session_start();
 
       $apparelData = array();
 
-      // Fetch the results as an associative array
       while ($row = $result->fetch_assoc()) {
           $apparelData[] = $row;
       }
 
-      // Close the database connection
       $mysqli->close();
-      // Loop through the fetched data and generate HTML for each item
+
       foreach ($apparelData as $item) {
           echo '<form class="apparel-item" method="POST" action="addtocart.php" data-brand="' . $item['brandid'] . '" data-sizeS="' . $item['sizeS'] . '" data-sizeM="' . $item['sizeM'] . '" data-sizeL="' . $item['sizeL'] . '" data-colour="' . $item['colourid'] . '">';
           echo '<input type="hidden" name="product_id" value="'.$item["itemid"].'">';

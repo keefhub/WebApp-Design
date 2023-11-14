@@ -15,22 +15,28 @@ session_start();
 
 <body>
     <div class="body">
-        <div class="top-bar">
-            <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-            <?php
-            if (isset($_SESSION['valid_user'])) {
-                echo '<div class="profile-dropdown">';
-                echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
-                echo '<div class="profile-dropdown-content">';
-                echo '<a href="./logout.php">Logout</a>';
-                echo '</div>';
-                echo '</div>';
-            } else {
-                echo '<a href="./loginpage.html">Login</a>';
-            }
-
+    <div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
 ?>
+
+            </div>
         </div>
+
         <div class="nav">
             <nav>
                 <ul>
@@ -92,8 +98,6 @@ session_start();
                 <h3>The Latest</h3>
                 <div class="image" style="display: flex; align-items: center">
                     <img src="../components/images/latestTrend.png" />
-
-                    <input type="button" value="Get It First" class="get-it-button" />
                 </div>
                 <div class="tagline">
                     <h1>

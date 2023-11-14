@@ -7,20 +7,23 @@ if($conn->connect_error) {
 
 session_start();
 
-$username = $_SESSION['valid_user'];
-$userid = $_SESSION['valid_id'];
-//connecting to db and querying every row of $username and $userid
-$sql = "SELECT * FROM profile WHERE name = '$username' AND userid = '$userid'";
-$result = $conn->query($sql);
+if (isset($_SESSION['valid_user'])) {
+    $username = $_SESSION['valid_user'];
+    $userid = $_SESSION['valid_id'];
 
-if (isset($userid) && isset($username)) {
-    //extracting email and address from connected db
-    $row = $result->fetch_assoc();
-    $email = $row['email'];
-    $address = $row['address'];
-    $mobileNumber = $row['contact_number'];
-} else {
-    echo "You are not logged in!";
+    //connecting to db and querying every row of $username and $userid
+    $sql = "SELECT * FROM profile WHERE name = '$username' AND userid = '$userid'";
+    $result = $conn->query($sql);
+
+    if (isset($userid) && isset($username)) {
+        $row = $result->fetch_assoc();
+        $email = $row['email'];
+        $address = $row['address'];
+        $mobileNumber = $row['contact_number'];
+    }
+}
+else {
+    echo "<script>alert('You are not logged in!')</script>";
 }
 $conn->close();
 
@@ -29,7 +32,7 @@ $conn->close();
 <html>
 
 <head>
-    <title>Homepage</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="./stylesheet/app.css" />
     <link rel="stylesheet" href="./stylesheet/profile.css" />
     <link rel="stylesheet" href="./stylesheet/footer.css" />
@@ -39,22 +42,28 @@ $conn->close();
 
 <body>
     <div class="body">
-        <div class="top-bar">
-            <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
-            <?php
-            if (isset($_SESSION['valid_user'])) {
-                echo '<div class="profile-dropdown">';
-                echo '<a href="profile.php">' .$_SESSION['valid_user'] . '</a>';
-                echo '<div class="profile-dropdown-content">';
-                echo '<a href="./logout.php">Logout</a>';
-                echo '</div>';
-                echo '</div>';
-            } else {
-                echo '<a href="./login/loginpage.html">Login</a>';
-            }
-
+    <div class="header">
+            <div class="logo">
+                <a href="./homepage.php"> <img src="../components/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="top-bar">
+                <a href="./cart.php"><img src="../components/icons/shopping-bag.png" alt="cart" /></a>
+                <?php
+        if (isset($_SESSION['valid_user'])) {
+            echo '<div class="profile-dropdown">';
+            echo '<a href="profile.php">' . $_SESSION['valid_user'] . '</a>';
+            echo '<div class="profile-dropdown-content">';
+            echo '<a href="./logout.php">Logout</a>';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo '<a href="./loginpage.html">Login</a>';
+        }
 ?>
+
+            </div>
         </div>
+
         <div class="nav">
             <nav>
                 <ul>
@@ -103,10 +112,17 @@ $conn->close();
                 <div class="main-content">
                     <div class="profile">
                         <?php
-echo '<div class="username">';
-echo '<h3>Stay Vogue, ', $username, ' </span></h3>';
-echo '</div>';
-?>
+                        if (isset($_SESSION['valid_user'])) {
+                        echo '<div class="username">';
+                        echo '<h3>Stay Vogue, ', $username, ' </span></h3>';
+                        echo '</div>';
+                        }
+                        else {
+                            echo '<div class="username">';
+                            echo '<h3>You are not logged in!</h3>';
+                            echo '</div>';
+                        }
+                        ?>
                     </div>
                     <div class="tab-container">
                         <div class="tab">
@@ -158,7 +174,6 @@ echo '</div>';
                                 if (!empty($purchasedata)) {
                                     foreach ($purchasedata as $purchase) {
 
-                                        // Access product details and display them as needed
                                         $product_name = $apparelData[$purchase['userid']]["itemname"];
                                         $product_price = $apparelData[$purchase['userid']]["price"];
                                         $product_id = $purchase['itemid'];

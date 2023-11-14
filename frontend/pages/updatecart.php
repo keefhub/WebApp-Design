@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $size = $_POST['size'];
             $new_quantity = $_POST['new_quantity'];
 
-            // Update the session cart with the new quantity
             if (isset($_SESSION['cart'][$product_id][$size])) {
                 $_SESSION['cart'][$product_id][$size] = $new_quantity;
             }

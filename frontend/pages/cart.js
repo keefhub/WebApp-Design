@@ -19,7 +19,7 @@ function updateQuantity(product_id, size, action) {
             '&size=' + encodeURIComponent(size) +
             '&new_quantity=' + encodeURIComponent(quantity),
     });
-
+    location.reload();
 }
 
 function removeItem(product_id, size, element) {
@@ -34,8 +34,14 @@ function removeItem(product_id, size, element) {
         body: 'action=updateQuantity&product_id=' + encodeURIComponent(product_id) +
             '&size=' + encodeURIComponent(size),
     });
+    location.reload();
 }
 
-function checkout() {
-    document.location.href = './checkout.php';
+function checkout(cart) {
+    if (cart) {
+        document.location.href = './checkout.php';
+    }
+    else {
+        alert("Your cart is empty!");
+    }
 }

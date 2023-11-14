@@ -17,7 +17,6 @@ while ($row = $result->fetch_assoc()) {
     $orderno++;
 }
 
-// Collect credit card details from the form
 $card_number = (int)$_POST['card_number'];
 $expiry_date = (string)$_POST['expiry_date'];
 $cvv = (int)$_POST['cvv'];
@@ -29,7 +28,7 @@ $city = $_SESSION['shipcity'];
 $state = $_SESSION['shipstate'];
 $zip = (int)$_SESSION['shipzip'];
 
-// Insert the credit card information into the database
+
 $sql = "INSERT INTO transaction (orderno, userid, name, emailadd, address, city, state, zip, ccno, expdate, cvv) 
 VALUES ($orderno, $userid, '$name', '$email', '$address', '$city', '$state', $zip, $card_number, '$expiry_date', $cvv)";
 
@@ -42,9 +41,41 @@ foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
     }
 }
 
+$query3 = "SELECT * FROM inventory";
+
+$result3 = $mysqli->query($query3);
+
+$itemData = array();
+
+while ($row3 = $result3->fetch_assoc()) {
+    $itemData[] = $row3;
+}
+
+
 if ($mysqli->query($sql) === TRUE) {
+
+    $to = "$email";
+    $subject = 'Order Confirmation';
+    $message = 'Your order has been confirmed.' . "\n" . 'Your order:' . "\n";
+    foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
+        foreach ($product_sizes as $size => $quantity) { 
+            $product_name = $itemData["$product_id"-1]["itemname"];
+            $product_price = $itemData["$product_id"-1]["price"];
+
+            $bought = "$product_name (Size: $size) x $quantity at $$product_price/pc.\n";
+            $message = $message . $bought;
+        }
+    }
+    
+
+    ;
+    $headers = 'From: f32ee@localhost' . "\r\n" . 'Reply-To: f32ee@localhost' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+    
+    mail($to, $subject, $message, $headers);
+
+
     echo '<script>';
-    echo 'alert("Payment complete. Your order will be shipped as soon as possible.");';
+    echo 'alert("Payment complete. Your order will be shipped as soon as possible. A confirmation email has been sent to you.");';
     echo 'window.location.href = "./homepage.php";';
     echo '</script>';
     unset($_SESSION['cart']);
@@ -53,6 +84,5 @@ if ($mysqli->query($sql) === TRUE) {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
-// Close the database connection
 $mysqli->close();
 ?>
