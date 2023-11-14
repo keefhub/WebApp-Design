@@ -51,3 +51,15 @@ function CvvValidation() {
     return true;
   }
 }
+
+function PaymentValidation() {
+  var isCreditCardValid = CreditCardValidation();
+  var isDateValid = DateValidation();
+  var isCvvValid = CvvValidation();
+
+  if (isCreditCardValid && isDateValid && isCvvValid) {
+    return true;
+  } else {
+    return false;
+  }
+}

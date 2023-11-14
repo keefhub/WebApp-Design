@@ -10,13 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to = 'webapp@localhost';
     $subject = 'Contact Us Query';
     $message = "Name: $name\nContact Number: $contactNumber\nEmail: $email\nMessage:\n$message";
-
+    if (empty($name) || empty($contactNumber) || empty($email) || empty($message)) {
+        // Handle invalid form data, e.g., redirect back to the form with an error message
+        $_SESSION['error_message'] = 'Please fill in all the required fields.';
+        header('Location: your-form-page.php');
+        exit;
+    }
     // You can use mail() function to send the email
     mail($to, $subject, $message);
-
-    // Redirect to a thank you page or show a confirmation message
-    header('Location: thank-you.php');
-    exit;
 }
 ?>
 
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="./stylesheet/app.css" />
   <link rel="stylesheet" href="./stylesheet/footer.css" />
   <link rel="stylesheet" href="./stylesheet/contactus.css" />
+  <script src=contact-us.js defer></script>
 </head>
 
 <body>
@@ -102,15 +104,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="main-content">
       <h1>Contact Us</h1>
       <p>Have questions or feedback? Please fill out the form below:</p>
-      <form method="POST" action="contact-us.php">
+      <form method="POST" action="contact-us.php" onsubmit="return validateForm()">
         <label for="name">Name:</label>
-        <input type="text" name="name" required><br>
+        <input type="text" name="name" id="name" oninput="NameValidation()" required><br>
+        <br />
+        <span id="errorName" class="error"></span>
+        <br />
         <label for="contactNumber">Contact Number:</label>
-        <input type="tel" name="contactNumber" required><br>
+        <input type="tel" name="contactNumber" oninput="ContactNumberValidation()" id="contact" required><br>
+        <br />
+        <span id="errorContactNumber" class="error"></span>
+        <br />
         <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+        <input type="email" name="email" oninput="EmailValidation()" id="emailaddress" required><br>
+        <br />
+        <span id="errorEmail" class="error"></span>
+        <br />
         <label for="message">Message:</label>
-        <textarea name="message" rows="4" required></textarea><br>
+        <textarea name="message" rows="4" max="300" oninput="MessageValidation()" id="message" required></textarea><br>
+        <br />
+        <span id="errorMessage" class="error"></span>
+        <br />
         <input type="submit" value="Submit">
       </form>
     </div>

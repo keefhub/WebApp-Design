@@ -47,7 +47,7 @@ if (!isset($_SESSION['valid_user'])) {
     <div class="main-content">
       <main>
         <h2>Payment Information</h2>
-        <form action="process_payment.php" method="post">
+        <form action="process_payment.php" method="post" onsubmit="return PaymentValidation()">
           <label for="card_number">Card Number:</label>
           <input type="number" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
           <br />
