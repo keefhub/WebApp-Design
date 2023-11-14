@@ -13,6 +13,7 @@ if (!isset($_SESSION['valid_user'])) {
   <link rel="stylesheet" href="./stylesheet/app.css" />
   <link rel="stylesheet" href="./stylesheet/payment.css" />
   <link rel="stylesheet" href="./stylesheet/footer.css" />
+  <script src="payment.js" defer></script>
   <meta charset="utf-8" />
 </head>
 
@@ -31,7 +32,7 @@ if (!isset($_SESSION['valid_user'])) {
                 echo '<a href="./loginpage.html">Login</a>';
             }
 
-    ?>
+?>
   </div>
   <div class="body">
     <div class="nav">
@@ -44,29 +45,39 @@ if (!isset($_SESSION['valid_user'])) {
       </nav>
     </div>
     <div class="main-content">
-    <main>
-    <h2>Payment Information</h2>
-    <form action="process_payment.php" method="post">
-        <label for="card_number">Card Number:</label>
-        <input type="number" id="card_number" name="card_number" required>
+      <main>
+        <h2>Payment Information</h2>
+        <form action="process_payment.php" method="post">
+          <label for="card_number">Card Number:</label>
+          <input type="number" id="card_number" name="card_number" oninput="CreditCardValidation()" required>
+          <br />
+          <span id="errorCardNumber" class="error"></span>
+          <br />
 
-        <label for="expiry_date">Expiry Date (YYYY/MM):</label>
-        <input type="text" id="expiry_date" name="expiry_date" required>
+          <label for="expiry_date">Expiry Date (YYYY/MM):</label>
+          <input type="text" id="expiry_date" name="expiry_date" oninput="DateValidation()" required>
+          <br />
+          <span id="errorDate" class="error"></span>
+          <br />
 
-        <label for="cvv">CVV:</label>
-        <input type="number" id="cvv" name="cvv" required>
+          <label for="cvv">CVV:</label>
+          <input type="number" id="cvv" name="cvv" oninput="CvvValidation()" required>
+          <br />
+          <span id="errorCvv" class="error"></span>
+          <br />
 
-        <button type="submit">Submit Payment</button>
-    </form>
-    </main>
+          <button type="submit">Submit Payment</button>
+        </form>
+      </main>
     </div>
-  <footer>
-    <div class="footer">
-      <div class="footer-content">
-        <p>&copy; 2023 Daryl & Keith Fashion</p>
+    <footer>
+      <div class="footer">
+        <div class="footer-content">
+          <p>&copy; 2023 Daryl & Keith Fashion</p>
+        </div>
       </div>
-    </div>
-  </footer>
-  <script type="text/javascript" src="./payment.js"></script>
+    </footer>
+    <script type="text/javascript" src="./payment.js"></script>
 </body>
+
 </html>

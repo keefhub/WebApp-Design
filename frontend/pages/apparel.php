@@ -4,6 +4,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@ session_start();
   <link rel="stylesheet" href="./stylesheet/apparel.css">
   <link rel="stylesheet" href="./stylesheet/footer.css">
 </head>
+
 <body>
   <header>
     <!-- Header content, including navigation and logo -->
@@ -29,7 +31,7 @@ session_start();
                 echo '<a href="./loginpage.html">Login</a>';
             }
 
-      ?>
+?>
     </div>
     <div class="nav">
       <nav>
@@ -78,7 +80,7 @@ session_start();
       </script>
   </header>
   <main>
-  <h2>Clothes</h2>
+    <h2>Clothes</h2>
     <div class="container">
       <aside class="filter-bar">
         <!-- Filter options go here (e.g., brands, sizes, colors) -->
@@ -99,54 +101,54 @@ session_start();
         </ul>
       </aside>
       <section class="product-list" id="apparel-list">
-      <?php
-      // Connect to your database
-      $mysqli = new mysqli("localhost", "root", "", "webapp");
+        <?php
+// Connect to your database
+$mysqli = new mysqli("localhost", "root", "", "webapp");
 
-      // Check connection
-      if ($mysqli->connect_error) {
-          die("Connection failed: " . $mysqli->connect_error);
-      }
-      // Query to retrieve apparel data
-      $query = "SELECT * FROM inventory";
+// Check connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+// Query to retrieve apparel data
+$query = "SELECT * FROM inventory";
 
-      $result = $mysqli->query($query);
+$result = $mysqli->query($query);
 
-      $apparelData = array();
+$apparelData = array();
 
-      // Fetch the results as an associative array
-      while ($row = $result->fetch_assoc()) {
-          $apparelData[] = $row;
-      }
+// Fetch the results as an associative array
+while ($row = $result->fetch_assoc()) {
+    $apparelData[] = $row;
+}
 
-      // Close the database connection
-      $mysqli->close();
-      // Loop through the fetched data and generate HTML for each item
-      foreach ($apparelData as $item) {
-          echo '<form class="apparel-item" method="POST" action="addtocart.php" data-brand="' . $item['brandid'] . '" data-sizeS="' . $item['sizeS'] . '" data-sizeM="' . $item['sizeM'] . '" data-sizeL="' . $item['sizeL'] . '" data-colour="' . $item['colourid'] . '">';
-          echo '<input type="hidden" name="product_id" value="'.$item["itemid"].'">';
-          echo '<div>';
-          echo '<h2>' . $item['itemname'] . '</h2>';
-          echo '<a href="./productdetail.php?itemid='.$item['itemid'].'"><img class="image" src="../components/images/products/' . $item['itemid'] . '.jpeg" alt="' . $item['itemname'] .'"></a>';
-          echo '<input type="hidden" class="product-quantity" name="quantity" id="quantity" value="1">';
-          echo '<p class="price">$' . $item['price'] . '</p>';
-          echo '<label class="product-size" for="size">Size:</label>';
-          echo '<select class="product-size" id="size" name="size">';
-          if ($item["sizeS"] > 0) {
-            echo '<option value="S">S</option>';
-          }
-          if ($item["sizeM"] > 0) {
-            echo '<option value="M">M</option>';
-          }
-          if ($item["sizeL"] > 0) {
-            echo '<option value="L">L</option>';
-          }
-          echo '</select>';
-          echo '<input type="submit" class="addcartbutton" name="additem" value="Add to Cart">';
-          echo '</div>';
-          echo '</form>';
-      };
-      ?>
+// Close the database connection
+$mysqli->close();
+// Loop through the fetched data and generate HTML for each item
+foreach ($apparelData as $item) {
+    echo '<form class="apparel-item" method="POST" action="addtocart.php" data-brand="' . $item['brandid'] . '" data-sizeS="' . $item['sizeS'] . '" data-sizeM="' . $item['sizeM'] . '" data-sizeL="' . $item['sizeL'] . '" data-colour="' . $item['colourid'] . '">';
+    echo '<input type="hidden" name="product_id" value="'.$item["itemid"].'">';
+    echo '<div>';
+    echo '<h2>' . $item['itemname'] . '</h2>';
+    echo '<a href="./productdetail.php?itemid='.$item['itemid'].'"><img class="image" src="../components/images/products/' . $item['itemid'] . '.jpeg" alt="' . $item['itemname'] .'"></a>';
+    echo '<input type="hidden" class="product-quantity" name="quantity" id="quantity" value="1">';
+    echo '<p class="price">$' . $item['price'] . '</p>';
+    echo '<label class="product-size" for="size">Size:</label>';
+    echo '<select class="product-size" id="size" name="size">';
+    if ($item["sizeS"] > 0) {
+        echo '<option value="S">S</option>';
+    }
+    if ($item["sizeM"] > 0) {
+        echo '<option value="M">M</option>';
+    }
+    if ($item["sizeL"] > 0) {
+        echo '<option value="L">L</option>';
+    }
+    echo '</select>';
+    echo '<input type="submit" class="addcartbutton" name="additem" value="Add to Cart">';
+    echo '</div>';
+    echo '</form>';
+};
+?>
       </section>
     </div>
   </main>

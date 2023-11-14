@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <br />
       <div>
-        
+
       </div>
 
       <script>
@@ -98,30 +98,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         showSlides();
       </script>
-  </div>
-  <div class="main-content">
-    <h1>Contact Us</h1>
-    <p>Have questions or feedback? Please fill out the form below:</p>
-    <form method="POST" action="contact-us.php">
-      <label for="name">Name:</label>
-      <input type="text" name="name" required><br>
-      <label for="contactNumber">Contact Number:</label>
-      <input type="tel" name="contactNumber" required><br>
-      <label for="email">Email:</label>
-      <input type="email" name="email" required><br>
-      <label for="message">Message:</label>
-      <textarea name="message" rows="4" required></textarea><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-  
-  <footer>
-    <div class="footer">
-      <div class="footer-content">
-        <p>&copy; 2023 Daryl & Keith Fashion</p>
-      </div>
     </div>
-  </footer>
+    <div class="main-content">
+      <h1>Contact Us</h1>
+      <p>Have questions or feedback? Please fill out the form below:</p>
+      <form method="POST" action="contact-us.php">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+        <label for="contactNumber">Contact Number:</label>
+        <input type="tel" name="contactNumber" required><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="message">Message:</label>
+        <textarea name="message" rows="4" required></textarea><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="footer-content">
+          <p>&copy; 2023 Daryl & Keith Fashion</p>
+        </div>
+      </div>
+    </footer>
 </body>
 
 </html>

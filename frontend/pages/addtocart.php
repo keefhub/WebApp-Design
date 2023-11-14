@@ -9,12 +9,12 @@ if (isset($_SESSION['valid_user'])) {
         $product_id = $_POST['product_id'];
         $quantity = $_POST['quantity'];
         $size = $_POST['size'];
-        
+
         // Check if the cart session variable already exists. If not, create one.
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = array();
         }
-        
+
         // Check if the product in the specified size is already in the cart
         if (isset($_SESSION['cart'][$product_id][$size])) {
             // If it's in the cart, update the quantity
@@ -23,7 +23,7 @@ if (isset($_SESSION['valid_user'])) {
             // If it's not in the cart, add it to the cart with quantity
             $_SESSION['cart'][$product_id][$size] = $quantity;
         }
-        
+
 
         // Redirect back to the referring page
         if (isset($_SERVER['HTTP_REFERER'])) {
@@ -35,13 +35,9 @@ if (isset($_SESSION['valid_user'])) {
             echo 'Product added to the cart successfully.';
         }
         exit;
-    }
-    else {
+    } else {
         echo 'Invalid product information.';
     }
 } else {
     echo 'Please log in to add items to your cart.';
 }
-
-
-?>

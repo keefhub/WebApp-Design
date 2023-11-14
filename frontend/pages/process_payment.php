@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 $mysqli = new mysqli("localhost", "root", "", "webapp");
@@ -42,17 +43,16 @@ foreach ($_SESSION['cart'] as $product_id => $product_sizes) {
     }
 }
 
-if ($mysqli->query($sql) === TRUE) {
+if ($mysqli->query($sql) === true) {
     echo '<script>';
     echo 'alert("Payment complete. Your order will be shipped as soon as possible.");';
     echo 'window.location.href = "./homepage.php";';
     echo '</script>';
     unset($_SESSION['cart']);
-    
+
 } else {
     echo "Error: " . $sql . "<br>" . $mysqli->error;
 }
 
 // Close the database connection
 $mysqli->close();
-?>
