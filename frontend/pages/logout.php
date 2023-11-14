@@ -27,8 +27,11 @@ session_destroy();
 
     </div>
     </div>
-    <h1>Log out</h1>
-    <?php
+    <div class="body">
+        <h1>Log out</h1>
+        <a href="./homepage.php">Back to Home</a> <br />
+
+        <?php
         if(!empty($old_user)) {
             echo 'Logged out.<br />';
             echo 'Back to log in page <a href="homepage.php">here</a>';
@@ -37,6 +40,7 @@ session_destroy();
             echo 'Back to log in page <a href="homepage.php">here</a>';
         }
 ?>
+    </div>
 </body>
 
 </html>
