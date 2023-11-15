@@ -55,9 +55,9 @@ function ContactNumberValidation() {
 }
 
 function validateForm() {
-  var isNameValid = validateName();
-  var isContactNumberValid = validateContactNumber();
-  var isEmailValid = validateEmail();
+  var isNameValid = NameValidation();
+  var isContactNumberValid = ContactNumberValidation();
+  var isEmailValid = EmailValidation();
 
   if (isNameValid && isContactNumberValid && isEmailValid) {
     return true;
